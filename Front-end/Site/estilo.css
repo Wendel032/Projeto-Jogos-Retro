@@ -19,7 +19,7 @@ button:active {
     outline: none;
 }
 
-#ret_principal {
+.ret_principal {
     height: 95%;
     width: 90%;
     margin-left: 6%;
@@ -136,8 +136,9 @@ button:active {
 .linha {
     background-color: #453031;
     height: 0.3vh;
-    width: 95%;
+    width: 98%;
     margin: 1% 1% 1% 1%;
+    display: flex;
 }
 
 #cumprimento {
@@ -281,4 +282,81 @@ button:active {
     margin: 5vh 1vh 1vh 0vh;
     color: #fdf9b4;
     font-weight: bold;
+}
+
+#ret_superior3 {
+    width: 100%;
+    height: 15%;
+}
+
+#titulo3 {
+    font-size: 8vh;
+    font-weight: bolder;
+    margin: 0.5% 1% 0% 1%;
+    display: inline-block;
+}
+
+.but_superior{
+    width: 15%;
+    height: 40%;
+    background-color: #453031;
+    color: #fdf9b4;
+    border-radius: 3vh;
+    margin: -2% 1% 0% 1%;  
+    font-size: 3vh;
+    font-weight: bold;
+    display: inline-block;
+}
+
+#cards {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card{
+    width: 22%;
+    height: 80%;
+    background-color: #453031;
+    color: #fdf9b4;
+    border-radius: 4vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#graficos{
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-wrap: wrap; 
+    align-self: center;
+    margin: 0% 0% 0% 1.5%;
+    justify-content: center;
+}
+
+.grafico {
+    width: 50%;
+    height: 80%;
+    margin: 0.5%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: none;
+}
+
+.grafico2 {
+    width: 34%;
+    height: 80%;
+    margin: 0.5%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: none;
 }

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Estatísticas do Quiz</title>
+</head>
+
+<body>
+    <div class="ret_principal">
+        <div id="ret_superior3">
+            <span id="titulo3">Estatísticas do Quiz</span>
+            <button class="but_superior">Voltar ao Início</button>
+            <button class="but_superior">Página Anterior</button>
+            <span class="linha">
+        </div>
+        <div id="cards">
+            <div class="card"><b>Castlevania: Symphony of the Night</b>Jogo mais Recomendado</div>
+            <div class="card"><b>Metroidvania</b>Gênero mais escolhido</div>
+            <div class="card"><b>20</b>Número de acessos</div>
+            <div class="card"><b>História</b> Maior impacto na escolha</div>
+        </div>
+        <div id="graficos">
+            <span class="grafico"> <canvas id="Barras"></canvas> </span>
+            <span class="grafico2"> <canvas id="Pizza"></canvas> </span>
+        </div>
+    </div>
+</body>
+<script>
+    const js_barras = document.getElementById('Barras');
+    const js_pizza = document.getElementById('Pizza');
+
+
+    new Chart(js_barras, {
+        type: 'bar',
+        data: {
+            labels: ['SOTN', 'RE2', 'CT', 'MMX', 'FFT', 'OFT'],
+            datasets: [
+                {
+                    label: 'Jogos Recomendados',
+                    data: [5, 4, 3, 3, 3, 2],
+                    backgroundColor: '#5f4e50',
+                    borderWidth: 1
+                }]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Siglas dos Jogos'
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Vezes Que Foram Recomendados'
+                    },
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Jogos Mais Recomendados Pelo Quiz'
+                }
+            }
+        }
+    });
+
+
+    new Chart(js_pizza, {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [5, 4, 3, 2, 3, 3]
+            }],
+            labels: [
+                'Metroidvania',
+                'Terror',
+                'Plataforma',
+                'Aventura',
+                'RPG',
+                'Estrátegia']
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Gêneros Mais Recomendados'
+                }
+            }
+        }
+    });
+</script>
+
+</html>
