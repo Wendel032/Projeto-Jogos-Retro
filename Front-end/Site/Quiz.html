@@ -15,7 +15,7 @@
             <p class="subtitulo2">Quiz</p>
             <p class="subtitulo2">Qual game retrô mais combina com seu perfil?</p>
             <span class="linha"></span>
-            <p id="Cumprimento">Parabéns, Wendel, você é a 7° Pessoa a realizar este quiz!</p>
+            <p id="Cumprimento">Parabéns, você é a 7° Pessoa a realizar este quiz!</p>
             <!--No futuro, capturar o nome do usuário-->
         </div>
 
@@ -143,8 +143,15 @@
         </div>
         <span class="linha"></span>
 
-        <button id="but_enviar">Enviar Respostas</button>
+        <button onclick="recomendar()" id="but_enviar">Enviar Respostas</button>
     </div>
 </body>
+<script>
+    if(sessionStorage.getItem('nome')){
+    Cumprimento.innerHTML = `Parabéns, ${sessionStorage.getItem('nome')}, você é a 7° Pessoa a realizar este quiz!`}
 
+    function recomendar() {
+        window.location.href = "Recomendacao.html"
+    }
+</script>
 </html>

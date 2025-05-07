@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
     <title>Jogos Retrô - Recomendação</title>
 </head>
+
 <body>
     <div class="ret_principal">
         <div class="ret_superior2">
-        <p id="titulo2">Com Base Em Seu Perfil Recomendo-lhe...</p>
-        <span class="linha"></span>
-        <p class="subtitulo2">Castlevania: Symphony of the Night - 1997</p> <br>
+            <p id="titulo2">Com Base Em Seu Perfil Recomendo-lhe...</p>
+            <span class="linha"></span>
+            <p class="subtitulo2">Castlevania: Symphony of the Night - 1997</p> <br>
         </div>
         <div class="ret_espc1">
-            <img id="jogo_recomendacao" src="SOFTN.jpg" alt="jogo"> <br>
+            <img id="jogo_recomendacao" src="Capas/SOTN.jpg" alt="jogo"> <br>
             <b>Plataformas: PS1, PS4, PS5, PC</b>
         </div>
         <div class="ret_espc2">
             <div class="caixa_texto2">
-                <p class="subtitulo2">Sobre o Jogo</p>
-                <p class="texto">Considerado por muitos o ápice da franquia Castlevania, mesmo após décadas de seu lançamento, Castlevania: Symphony of the Night é amplamente reconhecido como o jogo que ajudou a definir um novo gênero: Metroidvania. Faz jus ao nome e entrega uma verdadeira sinfonia em forma de jogo eletrônico - música, gameplay, gráficos - tudo nesse título parece estar em perfeita sintonia, criando uma experiência única para o jogador. 
-                    No entanto, nem tudo são flores: não espere uma história complexa, e a reta final pode parecer um pouco fora de tom com o restante da obra.</p>
-                    <button class="but_recomendacao">Voltar ao Início</button>
-                    <button class="but_recomendacao">Ver Estatísticas do Quiz</button>
+                <p class="subtitulo2">Review do Jogo</p>
+                <p id="texto2">Considerado por muitos o ápice da franquia Castlevania, mesmo após décadas de seu
+                    lançamento, Castlevania: Symphony of the Night é amplamente reconhecido como o jogo que ajudou a
+                    definir um novo gênero: Metroidvania. Faz jus ao nome e entrega uma verdadeira sinfonia em forma de
+                    jogo eletrônico - música, gameplay, gráficos - tudo nesse título parece estar em perfeita sintonia,
+                    criando uma experiência única para o jogador.
+                    No entanto, nem tudo são flores: não espere uma história complexa, e a reta final pode parecer um
+                    pouco fora de tom com o restante da obra.</p>
+                <button onclick="inicio()" class="but_recomendacao">Voltar ao Início</button>
+                <button onclick="dashboard()" class="but_recomendacao">Ver Estatísticas do Quiz</button>
 
             </div>
         </div>
     </div>
 </body>
+<script>
+    function inicio() {
+        window.location.href = "inicio.html"
+    }
+
+    function dashboard() {
+        window.location.href = "dashboard.html"
+    }
+</script>
+
 </html>

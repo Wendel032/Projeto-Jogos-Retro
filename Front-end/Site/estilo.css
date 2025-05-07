@@ -59,9 +59,9 @@ button:active {
 }
 
 #texto {
-    font-size: 2.1vh;
+    font-size: 2.4vh;
     width: 74%;
-    height: 20%;
+    height: 28%;
     align-self: flex-start;
     margin: 0% 0% 0% 12%;
     text-align: justify;
@@ -103,8 +103,8 @@ button:active {
     align-self: flex-start;
 }
 
-.img_jogo {
-    width: 78%;
+#img_jogo {
+    width: 85%;
     height: 83%;
     border-radius: 5vh;
     margin: 5% 0% 1% 0%;
@@ -168,7 +168,7 @@ button:active {
 }
 
 .texto_pergunta {
-    font-size: 4vh;
+    font-size: 3.5vh;
 }
 
 .opcoes {
@@ -265,12 +265,13 @@ button:active {
     height: 60vh;
     border-radius: 4vh;
     display: fixed;
-    margin: -5% 0% 0% 0%;
+    margin: -5% 0% 0% 3%;
     border: 0.5vh solid #453031;
 }
 
 .caixa_texto2 {
     margin: 3vh 20vh 5vh 5vh;
+    font-size: 2.1vh;
 }
 
 .but_recomendacao{
@@ -287,25 +288,29 @@ button:active {
 #ret_superior3 {
     width: 100%;
     height: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
 
 #titulo3 {
     font-size: 8vh;
     font-weight: bolder;
-    margin: 0.5% 1% 0% 1%;
     display: inline-block;
+    margin: 0% 1% 0% 1%;
 }
 
 .but_superior{
     width: 15%;
-    height: 40%;
+    height: 45%;
     background-color: #453031;
     color: #fdf9b4;
     border-radius: 3vh;
-    margin: -2% 1% 0% 1%;  
     font-size: 3vh;
     font-weight: bold;
     display: inline-block;
+    margin: 0% 1% 0% 1%;
 }
 
 #cards {
@@ -313,6 +318,8 @@ button:active {
     height: 15%;
     display: flex;
     flex-direction: row;
+    align-self: center;
+    justify-self: center;
     justify-content: space-around;
 }
 
@@ -352,7 +359,7 @@ button:active {
 
 .grafico2 {
     width: 34%;
-    height: 80%;
+    height: 78%;
     margin: 0.5%;
     padding: 2%;
     display: flex;

@@ -13,10 +13,12 @@
     <div class="ret_principal">
         <div id="ret_superior3">
             <span id="titulo3">Estatísticas do Quiz</span>
-            <button class="but_superior">Voltar ao Início</button>
-            <button class="but_superior">Página Anterior</button>
-            <span class="linha">
+            <button onclick="iniciar()" class="but_superior">Voltar ao Início</button>
+            <button onclick="anterior()" class="but_superior">Página Anterior</button>
+
+
         </div>
+        <span class="linha"></span>
         <div id="cards">
             <div class="card"><b>Castlevania: Symphony of the Night</b>Jogo mais Recomendado</div>
             <div class="card"><b>Metroidvania</b>Gênero mais escolhido</div>
@@ -100,6 +102,13 @@
             }
         }
     });
+
+    function iniciar() {
+        window.location.href = "inicio.html"
+    }
+    function anterior() {
+        window.location.href = "recomendacao.html"
+    }
 </script>
 
 </html>
