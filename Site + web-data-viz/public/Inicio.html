@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Jogos Retrô</title>
+</head>
+
+<body>
+    <div class="ret_principal">
+        <div class="ret_secundario">
+            <p id="titulo_inicio">JOGOS RETRÔ</p> <br> <br>
+            <p id="subtitulo">O Frescor do Passado</p><br>
+            <p id="texto">Os gamers procuram constantemente novos lançamentos com as mais novas tecnologias e inovações
+                do mercado, em sua visão, os novos games devem ser maiores em todos os quesitos, porém, o que muitos
+                ignoram é que, nem sempre, ser maior significa ser melhor e, as vezes, olhar para o passado é o melhor
+                caminho para construir um bom futuro. Por esse motivo, elaborei um quiz para, de acordo com seu perfil,
+                recomendar-lhe um bom game retrô.</p> <br>
+            <input type="text" id="ipt_nome" placeholder="Seu Nome"> <br>
+            <button onclick="quiz()" id="but_iniciar">Iniciar Quiz</button>
+        </div>
+        <div class="ret_secundario"> 
+            <img id="img_jogo" src="Capas/SOFTN.jpg" alt="jogo"></img>
+            <b id="legenda_jogo">Castlevania: Symphony of the Night - 1997</b>
+        </div>
+    </div>
+</body>
+<script>
+    var caso = Number((Math.random() * 5).toFixed(0));
+    switch (caso) {
+        case 0:
+            img_jogo.src = "Capas/CT.jpg"
+            legenda_jogo.innerHTML = 'Chrono Trigger - 1995';
+            break;
+        case 1:
+            img_jogo.src = "Capas/RE2.png"
+            legenda_jogo.innerHTML = 'Resident Evil 2 - 1998';
+            break;
+        case 2:
+            img_jogo.src = "Capas/OFT.jpg"
+            legenda_jogo.innerHTML = 'The Legend of Zelda Ocarina Of Time - 1998';
+            break;
+        case 3:
+            img_jogo.src = "Capas/FFT.jpg"
+            legenda_jogo.innerHTML = 'Final Fantasy Tactics - 1997';
+            break;
+        case 4:
+            img_jogo.src = "Capas/MMX.jpg"
+            legenda_jogo.innerHTML = 'Mega Man X - 1993';
+            break;
+        case 5:
+            img_jogo.src = "Capas/SOTN.jpg"
+            legenda_jogo.innerHTML = 'Castlevania: Symphony of the Night - 1997';
+            break;
+    }
+    function quiz() {
+        sessionStorage.setItem('nome', ipt_nome.value);
+        window.location.href = "Quiz.html";
+    }
+</script>
+
+</html>
