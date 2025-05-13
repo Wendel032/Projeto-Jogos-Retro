@@ -32,47 +32,111 @@
     </div>
 </body>
 <script>
-    const js_barras = document.getElementById('Barras');
     const js_pizza = document.getElementById('Pizza');
 
 
-    new Chart(js_barras, {
-        type: 'bar',
-        data: {
-            labels: ['SOTN', 'RE2', 'CT', 'MMX', 'FFT', 'OFT'],
+
+    //Implementar Atualização no futuro
+    // let proximaAtualizacao;
+
+    obterDadosGrafico()
+
+    function obterDadosGrafico() {
+
+
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+
+        fetch(`/dashboard/contar`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: ['SOTN', 'MMX', 'FFT', 'OFT', 'RE2', 'CT' ],
             datasets: [
                 {
                     label: 'Jogos Recomendados',
-                    data: [5, 4, 3, 3, 3, 2],
+                    data: [0, 0, 0, 0, 0, 0],
                     backgroundColor: '#5f4e50',
                     borderWidth: 1
                 }]
-        },
-        options: {
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Siglas dos Jogos'
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.datasets[0].data[registro.numJogo - 1] = registro.vezesRecomendado;
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(dados.labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Siglas dos Jogos'
+                        },
                     },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Vezes Que Foram Recomendados'
+                        },
+                    }
                 },
-                y: {
-                    beginAtZero: true,
+                plugins: {
                     title: {
                         display: true,
-                        text: 'Vezes Que Foram Recomendados'
-                    },
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Jogos Mais Recomendados Pelo Quiz'
+                        text: 'Jogos Mais Recomendados Pelo Quiz'
+                    }
                 }
             }
-        }
-    });
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('Barras'),
+            config
+        );
+
+        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
 
 
     new Chart(js_pizza, {
