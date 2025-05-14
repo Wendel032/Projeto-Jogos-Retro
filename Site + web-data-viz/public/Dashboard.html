@@ -20,10 +20,10 @@
         </div>
         <span class="linha"></span>
         <div id="cards">
-            <div class="card"><b>Castlevania: Symphony of the Night</b>Jogo mais Recomendado</div>
-            <div class="card"><b>Metroidvania</b>Gênero mais escolhido</div>
-            <div class="card"><b>20</b>Número de acessos</div>
-            <div class="card"><b>História</b> Maior impacto na escolha</div>
+            <div class="card" id="kpi1"></div>
+            <div class="card" id="kpi2"></div>
+            <div class="card" id="kpi3"></div>
+            <div class="card" id="kpi4"></div>
         </div>
         <div id="graficos">
             <span class="grafico"> <canvas id="Barras"></canvas> </span>
@@ -32,16 +32,64 @@
     </div>
 </body>
 <script>
-    const js_pizza = document.getElementById('Pizza');
 
+    // KPI1
+    fetch(`/dashboard/maisRecomendado`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                kpi1.innerHTML = `<b>${resposta[0].maisRecomendado}</b>Jogo mais Recomendado`
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/KPI: ${error.message}`);
+        });
 
+    //KPI2
+    fetch(`/dashboard/tempoMedio`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                if (resposta[0].tempo < 60) {
+                    kpi2.innerHTML = `<b>${resposta[0].tempo} segundos</b> Tempo Médio de conclusão do quiz`
+                } else {
+                    kpi2.innerHTML = `<b>${(resposta[0].tempo / 60).toFixed(1)} minutos</b> Tempo Médio de conclusão do quiz`
+                }
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/KPI: ${error.message}`);
+        });
+
+    //KPI 3 e 4
+    fetch(`/usuarios2/listar`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                kpi3.innerHTML = `<b>${resposta[0].acessos}</b> Número de quizzes iniciados`
+                kpi4.innerHTML = `<b>${((resposta[0].respostas / resposta[0].acessos) * 100).toFixed(0)}%</B> Dos quizzes iniciados foram completados`
+            });
+        } else {
+            alert('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
 
     //Implementar Atualização no futuro
     // let proximaAtualizacao;
 
-    obterDadosGrafico()
+    obterDadosGrafico1()
+    obterDadosGrafico2()
 
-    function obterDadosGrafico() {
+    function obterDadosGrafico1() {
 
 
         /*if (proximaAtualizacao != undefined) {
@@ -53,7 +101,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    plotarGrafico(resposta);
+                    plotarGrafico1(resposta);
 
                 });
             } else {
@@ -65,13 +113,13 @@
             });
     }
 
-    function plotarGrafico(resposta) {
+    function plotarGrafico1(resposta) {
 
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - dados
         let dados = {
-            labels: ['SOTN', 'MMX', 'FFT', 'OFT', 'RE2', 'CT' ],
+            labels: ['SOTN', 'MMX', 'FFT', 'OFT', 'RE2', 'CT'],
             datasets: [
                 {
                     label: 'Jogos Recomendados',
@@ -138,34 +186,90 @@
         // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
 
+    function obterDadosGrafico2() {
 
-    new Chart(js_pizza, {
-        type: 'pie',
-        data: {
+
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+
+        fetch(`/dashboard/generos`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    plotarGrafico2(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico2(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels= [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
             datasets: [{
-                data: [5, 4, 3, 2, 3, 3]
+                data: []
             }],
-            labels: [
-                'Metroidvania',
-                'Terror',
-                'Plataforma',
-                'Aventura',
-                'RPG',
-                'Estrátegia']
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Gêneros Mais Recomendados'
+            labels: labels
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.genero);
+            dados.datasets[0].data.push(registro.vezesRecomendado);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(dados.labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Gêneros Mais Recomendados'
+                    }
                 }
             }
-        }
-    });
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('Pizza'),
+            config
+        );
+
+        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
+
 
     function iniciar() {
         window.location.href = "index.html"

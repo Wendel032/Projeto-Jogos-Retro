@@ -10,7 +10,7 @@ function cadastrar(nome) {
 
 function listar() {
     var instrucao = `
-        SELECT COUNT(idUsuario) AS acessos FROM Usuario;
+        SELECT COUNT(DISTINCT idUsuario) AS acessos, COUNT(idRespostasQuiz) AS respostas FROM Usuario LEFT JOIN RespostasQuiz ON idUsuario = fkUsuario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

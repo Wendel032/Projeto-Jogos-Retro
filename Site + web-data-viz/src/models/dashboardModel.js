@@ -8,6 +8,39 @@ function contar() {
     return database.executar(instrucao);
 }
 
+function tempoMedio() {
+    var instrucao = `
+    SELECT ROUND(AVG(TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHorarioQuiz)), 0) AS tempo FROM RespostasQuiz JOIN Usuario
+	ON idUsuario = fkUsuario;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function maisRecomendado() {
+    var instrucao = `
+    SELECT j.titulo maisRecomendado FROM Jogo j JOIN RespostasQuiz r 
+	ON j.idJogo = r.fkJogo
+	GROUP BY maisRecomendado
+    ORDER BY COUNT(*) DESC LIMIT 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function generos() {
+    var instrucao = `
+    SELECT j.genero AS genero, count(*) AS vezesRecomendado FROM Jogo j JOIN RespostasQuiz r 
+	ON j.idJogo = r.fkJogo
+	GROUP BY genero;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    contar
+    contar,
+    tempoMedio,
+    maisRecomendado,
+    generos
 };
