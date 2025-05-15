@@ -7,8 +7,4 @@ router.post("/cadastrar", function (req, res) {
     usuario2Controller.cadastrar(req, res);
 })
 
-router.get("/listar", function (req, res) {
-    usuario2Controller.listar(req, res);
-});
-
 module.exports = router;

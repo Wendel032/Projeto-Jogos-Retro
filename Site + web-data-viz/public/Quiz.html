@@ -35,7 +35,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/sotnGif.gif" alt="gif">
+                <img class="gifJogos" src="Gifs/sotnGif.gif" alt="gif" title="Gif de Castlevania: Symphony of the Night, © Konami, 1997.">
             </div>
         </div>
         <span class="linha"></span>
@@ -56,7 +56,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/ctGif.gif" alt="gif">
+                <img class="gifJogos" src="Gifs/ctGif.gif" alt="gif" title="Gif de Chrono Trigger, © Square Co., Ltd., 1995.">
             </div>
         </div>
         <span class="linha"></span>
@@ -73,7 +73,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/fnftGif.gif" alt="gif">
+                <img class="gifJogos" src="Gifs/fnftGif.gif" alt="gif" title="Gif de Final Fantasy Tactics: The War of the Lions, © Square Enix Co., Ltd., 2007.">
             </div>
         </div>
         <span class="linha"></span>
@@ -94,7 +94,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/re2Gif.gif" alt="gif">
+                <img class="gifJogos" src="Gifs/re2Gif.gif" alt="gif" title="Gif de Resident Evil 2, © Capcom, 1998.">
             </div>
         </div>
         <span class="linha"></span>
@@ -111,7 +111,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/oftGif.gif" alt="gif">
+                <img class="gifJogos" src="Gifs/oftGif.gif" alt="gif" title="Gif de The Legend of Zelda: Ocarina of Time, © Nintendo, 1998.">
             </div>
         </div>
         <span class="linha"></span>
@@ -132,7 +132,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/mmxGif.gif" alt="gif">
+                <img class="gifJogos" src="Gifs/mmxGif.gif" alt="gif" title="Gif de Mega Man X, © Capcom, 1993.">
             </div>
         </div>
         <span class="linha"></span>
@@ -152,6 +152,7 @@
 
     function recomendar() {
 
+        but_enviar.onclick = "";
         var r1 = pergunta1.p1.value;
         var r2 = pergunta2.p2.value;
         var r3 = pergunta3.p3.value;
@@ -243,7 +244,7 @@
             js_pontos[2] += 3;
             js_pontos[3] -= 3;
             js_pontos[4] -= 3;
-            js_pontos[5] += 6;
+            js_pontos[5] += 3;
         }
         else if (r3 == 'Não') {
             js_pontos[0] += 0;

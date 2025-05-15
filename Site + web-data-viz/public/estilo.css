@@ -1,7 +1,7 @@
 body,
 html {
     height: 100%;
-    margin: 0px;
+    margin: 0vw;
     background-image: url('fundo.jpg');
     align-content: center;
     color: #5f4e50;
@@ -20,11 +20,11 @@ button:active {
 }
 
 .ret_principal {
-    height: 95%;
-    width: 90%;
+    aspect-ratio: 18/9;
+    width: 88%;
     margin-left: 6%;
     opacity: 96%;
-    border-radius: 2vh;
+    border-radius: 1vw;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -41,17 +41,20 @@ button:active {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+    overflow-x: unset;
+    box-sizing: border-box;
 }
 
 #titulo_inicio {
-    font-size: 11vh;
+    font-size: 4vw;
     font-weight: bolder;
     align-self: flex-start;
     margin: 5% 0% 0% 12%;
 }
 
 #subtitulo {
-    font-size: 6vh;
+    font-size: 2.5vw;
     font-weight: bold;
     align-self: flex-start;
     margin: 0% 0% 0% 12%;
@@ -59,12 +62,13 @@ button:active {
 }
 
 #texto {
-    font-size: 2.4vh;
+    font-size: 1vw;
     width: 74%;
     height: 28%;
     align-self: flex-start;
     margin: 0% 0% 0% 12%;
     text-align: justify;
+    overflow-y: auto;
 }
 
 #ipt_nome {
@@ -76,9 +80,9 @@ button:active {
     align-self: flex-start;
     margin: 0% 0% 0% 15%;
     text-align: center;
-    font-size: 4vh;
+    font-size: 2vw;
     font-weight: bold;
-    border-radius: 4vh 4vh 4vh 4vh;
+    border-radius: 2vw;
     border: none;
 }
 
@@ -88,16 +92,16 @@ button:active {
 }
 
 #ipt_nome:focus {
-    border: 0.5vh solid #453031;
+    border: 0.2vw solid #453031;
     outline: #453031;
 }
 
 #but_iniciar {
     width: 40%;
     height: 10%;
-    font-size: 3vh;
-    border-radius: 4vh 4vh 4vh 4vh;
-    margin: 0% 0% 0% 28%;
+    font-size: 2vw;
+    border-radius: 2vw;
+    margin: 0% 0% 1% 28%;
     background-color: #453031;
     color: white;
     align-self: flex-start;
@@ -106,10 +110,14 @@ button:active {
 #img_jogo {
     width: 85%;
     height: 83%;
-    border-radius: 5vh;
+    border-radius: 3vw;
     margin: 5% 0% 1% 0%;
     border: solid;
     border-color: #453031;
+}
+
+#legenda_jogo {
+    font-size: 1.2vw;
 }
 
 #ret_superior {
@@ -122,27 +130,27 @@ button:active {
 }
 
 #titulo_geral {
-    font-size: 8vh;
+    font-size: 3.5vw;
     font-weight: bolder;
-    margin: 1% 0% 0% 0%;
+    margin: 0.5% 0% 0% 0%;
 }
 
 .subtitulo_geral {
-    font-size: 4vh;
+    font-size: 1.7vw;
     font-weight: bold;
     margin: 0% 0% 0% 0%;
 }
 
 .linha {
     background-color: #453031;
-    height: 0.3vh;
+    height: 0.1vw;
     width: 98%;
     margin: 1% 1% 1% 1%;
     display: flex;
 }
 
 #cumprimento {
-    font-size: 4vh;
+    font-size: 1.5vw;
 }
 
 .pergunta {
@@ -154,8 +162,8 @@ button:active {
 }
 
 .numeracao {
-    width: 6vh;
-    height: 6vh;
+    width: 2.5vw;
+    height: 2.5vw;
     background-color: #453031;
     border-radius: 50%;
     margin: 3.5% 2% 2% 2%;
@@ -168,7 +176,7 @@ button:active {
 }
 
 .texto_pergunta {
-    font-size: 3.5vh;
+    font-size: 1.6vw;
 }
 
 .opcoes {
@@ -179,8 +187,8 @@ button:active {
 
     input[type="radio"] {
         accent-color: #453031;
-        width: 5vh;
-        height: 5vh;
+        width: 2.2vw;
+        height: 2.2vw;
         cursor: pointer;
         border-color: #453031;
         margin-right: 1.5%;
@@ -189,7 +197,7 @@ button:active {
 
 .opcao {
     margin: 2% 0% 0% 8%;
-    font-size: 3.5vh;
+    font-size: 1.4vw;
     display: flex;
     align-items: center;
 }
@@ -203,35 +211,36 @@ button:active {
 }
 
 .caixa_comentario {
-    width: 80%;
-    height: 80%;
+    width: 85%;
+    height: 85%;
+    box-sizing: border-box;
     opacity: 100%;
-    border-radius: 5vh;
+    border-radius: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2vh;
+    padding: 1vw;
     background-size: cover;
     justify-self: flex-start;
     object-fit: contain;
-    border-radius: 5vh;
     margin: 5% 0% 1% 0%;
 }
 
 .gifJogos {
     width: 98%;
-    border-radius: 4vh;
+    border-radius: 2vw;
     border: solid;
     border-color: #453031;
     margin-bottom: 5%;
 }
 
 #but_enviar {
-    width: 30vh;
-    height: 10vh;
-    font-size: 3vh;
-    border-radius: 4vh 4vh 4vh 4vh;
+    width: 15vw;
+    height: 5vw;
+    font-size: 1.4vw;
+    font-weight: bold;
+    border-radius: 2vw;
     margin: 4% 0% 4% 45%;
     background-color: #453031;
     color: #fdf9b4;
@@ -261,26 +270,32 @@ button:active {
 }
 
 #jogo_recomendacao {
-    width: 60vh;
-    height: 60vh;
-    border-radius: 4vh;
+    width: 27vw;
+    height: 27vw;
+    border-radius: 2vw;
     display: fixed;
     margin: -5% 0% 0% 3%;
-    border: 0.5vh solid #453031;
+    border: 0.2vw solid #453031;
+}
+
+#plataformas {
+    font-size: 1vw;
 }
 
 .caixa_texto_recomendacao {
-    margin: 3vh 20vh 5vh 5vh;
-    font-size: 2.1vh;
+    margin: 1vw 4vw 0.1vw 1vw;
+    font-size: 1vw;
+    text-align: justify;
+    overflow-y: auto;
 }
 
-.but_recomendacao{
-    width: 30vh;
-    height: 10vh;
-    font-size: 2vh;
-    border-radius: 4vh 4vh 4vh 4vh;
+.but_recomendacao {
+    width: 15vw;
+    height: 5vw;
+    font-size: 1vw;
+    border-radius: 2vw;
     background-color: #453031;
-    margin: 5vh 1vh 1vh 0vh;
+    margin: 0.5vw 1vw 1vw 0.5vw;
     color: #fdf9b4;
     font-weight: bold;
 }
@@ -295,19 +310,19 @@ button:active {
 
 
 #titulo_dashboard {
-    font-size: 8vh;
+    font-size: 4vw;
     font-weight: bolder;
     display: inline-block;
     margin: 0% 1% 0% 1%;
 }
 
-.but_superior{
+.but_superior {
     width: 15%;
     height: 45%;
     background-color: #453031;
     color: #fdf9b4;
-    border-radius: 3vh;
-    font-size: 3vh;
+    border-radius: 2vw;
+    font-size: 1.2vw;
     font-weight: bold;
     display: inline-block;
     margin: 0% 1% 0% 1%;
@@ -323,12 +338,12 @@ button:active {
     justify-content: space-around;
 }
 
-.card{
+.card {
     width: 22%;
     height: 80%;
     background-color: #453031;
     color: #fdf9b4;
-    border-radius: 4vh;
+    border-radius: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -336,11 +351,11 @@ button:active {
 }
 
 
-#graficos{
+#graficos {
     width: 100%;
     height: 65%;
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     align-self: center;
     margin: 0% 0% 0% 1.5%;
     justify-content: center;

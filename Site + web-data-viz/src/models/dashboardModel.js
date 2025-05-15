@@ -38,9 +38,18 @@ function generos() {
     return database.executar(instrucao);
 }
 
+function acessos() {
+    var instrucao = `
+        SELECT COUNT(DISTINCT idUsuario) AS acessos, COUNT(idRespostasQuiz) AS respostas FROM Usuario LEFT JOIN RespostasQuiz ON idUsuario = fkUsuario;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     contar,
     tempoMedio,
     maisRecomendado,
-    generos
+    generos,
+    acessos
 };

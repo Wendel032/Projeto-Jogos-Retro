@@ -69,7 +69,7 @@
         });
 
     //KPI 3 e 4
-    fetch(`/usuarios2/listar`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/dashboard/acessos`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 kpi3.innerHTML = `<b>${resposta[0].acessos}</b> Número de quizzes iniciados`

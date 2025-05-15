@@ -19,4 +19,8 @@ router.get("/generos", function (req, res) {
     dashboardController.generos(req, res);
 });
 
+router.get("/acessos", function (req, res) {
+    dashboardController.acessos(req, res);
+});
+
 module.exports = router;

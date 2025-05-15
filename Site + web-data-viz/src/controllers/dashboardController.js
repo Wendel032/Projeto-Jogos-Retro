@@ -32,9 +32,18 @@ function generos(req, res) {
     })
 }
 
+function acessos(req, res) {
+    dashboardModel.acessos().then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
     contar,
     tempoMedio,
     maisRecomendado,
-    generos
+    generos,
+    acessos
 }
