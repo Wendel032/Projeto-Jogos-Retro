@@ -51,14 +51,14 @@ button:active {
     font-size: 4vw;
     font-weight: bolder;
     align-self: flex-start;
-    margin: 5% 0% 0% 10%;
+    margin: 5% 0% 3% 10%;
 }
 
 #subtitulo {
     font-size: 2.5vw;
     font-weight: bold;
     align-self: flex-start;
-    margin: 0% 0% 0% 10%;
+    margin: 0% 0% 3% 10%;
 
 }
 
@@ -67,45 +67,58 @@ button:active {
     width: 74%;
     height: 28%;
     align-self: flex-start;
-    margin: 0% 0% 0% 10%;
+    margin: 0% 0% 3% 10%;
     text-align: justify;
     overflow-y: auto;
 }
 
-#ipt_nome {
-    width: 68%;
-    height: 8%;
-    border-radius: 30%;
+#interativos{
+    width: 82%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.interativo{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ipt_inicio {
+    width: 75%;
+    height: 75%;
     background-color: #c9c7a0;
     color: white;
-    align-self: flex-start;
-    margin: 0% 0% 0% 13%;
+    margin: 0% 2% 0% 0%;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.2vw;
     font-weight: bold;
     border-radius: 2vw;
     border: none;
 }
 
-#ipt_nome::placeholder {
+.ipt_inicio::placeholder {
     text-align: center;
     color: white;
 }
 
-#ipt_nome:focus {
+.ipt_inicio:focus {
     border: 0.2vw solid #453031;
     outline: #453031;
 }
 
-#but_iniciar {
-    width: 40%;
-    height: 10%;
-    font-size: 2vw;
+.but_inicio {
+    width: 30%;
+    height: 60%;
+    font-size: 1vw;
     border-radius: 2vw;
-    margin: 0% 0% 1% 25%;
+    margin: 0% 0% 0% 0%;
     background-color: #453031;
     color: white;
-    align-self: flex-start;
 }
 
 #img_jogo {
@@ -263,6 +276,7 @@ button:active {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: 1vh;
 }
 
 .ret_recomendacao2 {
@@ -335,14 +349,17 @@ button:active {
     width: 24vw;
     height: 15vw;
     margin: 5%;
+    padding: 1%;
+    align-items: center;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-y: auto;
     background-color: #453031;
     border-radius: 2vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     box-sizing: border-box;
     color: #fdf9b4;
-    font-size: 2vw;
+    font-size: 1.8vw;
+    word-wrap: break-word;
 }
 
 #ret_superior_dashboard {

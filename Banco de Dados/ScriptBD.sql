@@ -22,6 +22,7 @@ resposta3 VARCHAR(45) NOT NULL,
 resposta4 VARCHAR(45) NOT NULL,
 resposta5 VARCHAR(45) NOT NULL,
 resposta6 VARCHAR(45) NOT NULL,
+codigo VARCHAR(45) NOT NULL,
 fkUsuario INT,
 fkJogo INT NOT NULL,
 CONSTRAINT fkRespostasQuizUsuario

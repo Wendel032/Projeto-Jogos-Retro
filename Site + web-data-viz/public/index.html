@@ -8,21 +8,30 @@
     <title>Jogos Retrô</title>
 </head>
 
-<body>
+<body alt="Imagem de fundo: consoles antigos de videogame (Reprodução: @robtek/Shutterstock)">
     <div class="ret_principal">
         <div class="ret_secundario">
-            <p id="titulo_inicio">JOGOS RETRÔ</p> <br> <br>
-            <p id="subtitulo">O Frescor do Passado</p><br>
+            <p id="titulo_inicio">JOGOS RETRÔ</p>
+            <p id="subtitulo">O Frescor do Passado</p>
             <p id="texto">Os gamers procuram constantemente novos lançamentos com as mais novas tecnologias e inovações
                 do mercado, em sua visão, os novos games devem ser maiores em todos os quesitos, porém, o que muitos
                 ignoram é que, nem sempre, ser maior significa ser melhor e, as vezes, olhar para o passado é o melhor
                 caminho para construir um bom futuro. Por esse motivo, elaborei um quiz para, de acordo com seu perfil,
-                recomendar-lhe um bom game retrô.</p> <br>
-            <input type="text" id="ipt_nome" placeholder="Seu Nome"> <br>
-            <button onclick="quiz()" id="but_iniciar">Iniciar Quiz</button>
+                recomendar-lhe um bom game retrô.</p>
+            <div id="interativos">
+                <div class="interativo">
+                    <input type="text" id="ipt_nome" class="ipt_inicio" placeholder="Seu Nome">
+                    <button onclick="quiz()" id="but_iniciar" class="but_inicio">Iniciar Quiz</button>
+                </div>
+                <div class="interativo">
+                    <input type="text" id="ipt_codigo" class="ipt_inicio" placeholder="Código">
+                    <button onclick="login()" id="but_codigo" class="but_inicio">Rever Repostas</button>
+                </div>
+            </div>
         </div>
         <div class="ret_secundario">
-            <img id="img_jogo" src="Capas/SOTN.jpg" alt="jogo" title="Capa do jogo Castlevania: Symphony of the Night, © Konami, 1997."></img>
+            <img id="img_jogo" src="Capas/SOTN.jpg" alt="jogo"
+                title="Capa do jogo Castlevania: Symphony of the Night, © Konami, 1997."></img>
             <b id="legenda_jogo">Castlevania: Symphony of the Night - 1997</b>
         </div>
     </div>
@@ -115,7 +124,48 @@
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
             });
-    }   
+    }
+
+    function login() {
+        var js_codigo = ipt_codigo.value;
+
+        fetch("/dashboard/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                codigoServer: js_codigo
+            })
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    if (resposta[0]) {
+                        alert(`Bem-vindo(a) de volta, ${resposta[0].nome}`)
+                        sessionStorage.setItem('codigo', resposta[0].codigo);
+                        setTimeout(() => {
+                            window.location = "Recomendacao.html";
+                        }, "500");
+
+                    } else {
+                        alert('Código não encontrado')
+                    }
+
+                });
+            }
+            else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                response.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
 </script>
 
 </html>

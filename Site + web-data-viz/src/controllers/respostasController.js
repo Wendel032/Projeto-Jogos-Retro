@@ -7,6 +7,7 @@ function cadastrar(req, res) {
     var resposta4 = req.body.r4Server;
     var resposta5 = req.body.r5Server;
     var resposta6 = req.body.r6Server;
+    var codigoAcesso = req.body.codigoServer;
     var usuario = req.body.usuarioServer;
     var jogoRecomendado = req.body.jrServer;
 
@@ -29,6 +30,9 @@ function cadastrar(req, res) {
         res.status(400).send("Resposta6 está undefined!");
     }
     if (usuario == undefined) {
+        res.status(400).send("O código está undefined!");
+    }
+    if (usuario == undefined) {
         res.status(400).send("O usuario está undefined!");
     }
     if (jogoRecomendado == undefined) {
@@ -37,7 +41,7 @@ function cadastrar(req, res) {
 
 
 
-    respostasModel.cadastrar(resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, usuario, jogoRecomendado).then(function (resposta) {
+    respostasModel.cadastrar(resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigoAcesso, usuario, jogoRecomendado).then(function (resposta) {
         res.status(200).send("Respostas criadas com sucesso");
     }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);

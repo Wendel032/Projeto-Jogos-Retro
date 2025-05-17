@@ -8,7 +8,7 @@
     <title>Jogos Retro - Quiz</title>
 </head>
 
-<body>
+<body alt="Imagem de fundo: consoles antigos de videogame (Reprodução: @robtek/Shutterstock)">
     <div class="ret_principal">
         <div id="ret_superior">
             <p class="titulo_geral">Jogos Retrô</p>
@@ -16,7 +16,6 @@
             <p class="subtitulo_geral">Qual game retrô mais combina com seu perfil?</p>
             <span class="linha"></span>
             <p id="Cumprimento">Obrigado por realizar este quiz, divirta-se</p>
-            <!--No futuro, capturar o nome do usuário-->
         </div>
 
         <div class="pergunta">
@@ -35,7 +34,8 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/sotnGif.gif" alt="gif" title="Gif de Castlevania: Symphony of the Night, © Konami, 1997.">
+                <img class="gifJogos" src="Gifs/sotnGif.gif" alt="gif"
+                    title="Gif de Castlevania: Symphony of the Night, © Konami, 1997.">
             </div>
         </div>
         <span class="linha"></span>
@@ -56,7 +56,8 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/ctGif.gif" alt="gif" title="Gif de Chrono Trigger, © Square Co., Ltd., 1995.">
+                <img class="gifJogos" src="Gifs/ctGif.gif" alt="gif"
+                    title="Gif de Chrono Trigger, © Square Co., Ltd., 1995.">
             </div>
         </div>
         <span class="linha"></span>
@@ -73,7 +74,8 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/fnftGif.gif" alt="gif" title="Gif de Final Fantasy Tactics: The War of the Lions, © Square Enix Co., Ltd., 2007.">
+                <img class="gifJogos" src="Gifs/fnftGif.gif" alt="gif"
+                    title="Gif de Final Fantasy Tactics: The War of the Lions, © Square Enix Co., Ltd., 2007.">
             </div>
         </div>
         <span class="linha"></span>
@@ -111,7 +113,8 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/oftGif.gif" alt="gif" title="Gif de The Legend of Zelda: Ocarina of Time, © Nintendo, 1998.">
+                <img class="gifJogos" src="Gifs/oftGif.gif" alt="gif"
+                    title="Gif de The Legend of Zelda: Ocarina of Time, © Nintendo, 1998.">
             </div>
         </div>
         <span class="linha"></span>
@@ -142,7 +145,7 @@
 </body>
 <script>
     if (sessionStorage.getItem('nome') && sessionStorage.getItem('acessos')) {
-        Cumprimento.innerHTML = `Parabéns, ${sessionStorage.getItem('nome')}, você é a ${sessionStorage.getItem('acessos')}° Pessoa a realizar este quiz!`
+        Cumprimento.innerHTML = `Parabéns, ${sessionStorage.getItem('nome')}, você é a ${sessionStorage.getItem('acessos')}° Pessoa a iniciar este quiz!`
     }
 
     var js_jogos = [1, 2, 3, 4, 5, 6];
@@ -152,7 +155,6 @@
 
     function recomendar() {
 
-        but_enviar.onclick = "";
         var r1 = pergunta1.p1.value;
         var r2 = pergunta2.p2.value;
         var r3 = pergunta3.p3.value;
@@ -160,6 +162,7 @@
         var r5 = pergunta5.p5.value;
         var r6 = pergunta6.p6.value;
         var pontos_ganhador = 0;
+        var codigo = sessionStorage.getItem('acessos');
 
         //Pergunta 1
         if (r1 == 'Uma história envolvente') {
@@ -169,6 +172,7 @@
             js_pontos[3] += 2;
             js_pontos[4] += 2;
             js_pontos[5] += 2;
+            codigo += 'A';
         }
         else if (r1 == 'Uma jogabilidade divertida') {
             js_pontos[0] += 3;
@@ -177,6 +181,7 @@
             js_pontos[3] += 3;
             js_pontos[4] += 0;
             js_pontos[5] += 3;
+            codigo += 'B';
         }
         else if (r1 == 'Um visual interessante') {
             js_pontos[0] += 3;
@@ -185,6 +190,7 @@
             js_pontos[3] += 1;
             js_pontos[4] += 1;
             js_pontos[5] += 2;
+            codigo += 'C';
         }
         else if (r1 == 'Uma atmosfera imersiva') {
             js_pontos[0] += 2;
@@ -193,6 +199,7 @@
             js_pontos[3] += 2;
             js_pontos[4] += 3;
             js_pontos[5] += 2;
+            codigo += 'D';
         }
         else {
             alert('Responda a pergunta 1, para enviar suas respostas')
@@ -207,6 +214,7 @@
             js_pontos[3] += 0;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
+            codigo += 'A';
         }
         else if (r2 == 'Fácil - Pouco desafiador') {
             js_pontos[0] += 2;
@@ -215,6 +223,7 @@
             js_pontos[3] += 2;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
+            codigo += 'B';
         }
         else if (r2 == 'Normal - Com desafios esporádicos') {
             js_pontos[0] += 2;
@@ -223,6 +232,7 @@
             js_pontos[3] += 3;
             js_pontos[4] += 1;
             js_pontos[5] += 1;
+            codigo += 'C';
         }
         else if (r2 == 'Difícil - Desafios constantes') {
             js_pontos[0] += 0;
@@ -231,6 +241,7 @@
             js_pontos[3] += 0;
             js_pontos[4] += 3;
             js_pontos[5] -= 3;
+            codigo += 'D';
         }
         else {
             alert('Responda a pergunta 2, para enviar suas respostas');
@@ -245,6 +256,7 @@
             js_pontos[3] -= 3;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
+            codigo += 'A';
         }
         else if (r3 == 'Não') {
             js_pontos[0] += 0;
@@ -253,6 +265,7 @@
             js_pontos[3] += 0;
             js_pontos[4] += 1;
             js_pontos[5] += 0;
+            codigo += 'B';
         }
         else {
             alert('Responda a pergunta 3, para enviar suas respostas')
@@ -267,6 +280,7 @@
             js_pontos[3] -= 0;
             js_pontos[4] -= 3;
             js_pontos[5] -= 0;
+            codigo += 'A';
         }
         else if (r4 == 'Jogabilidade Complexa') {
             js_pontos[0] -= 0;
@@ -275,6 +289,7 @@
             js_pontos[3] -= 1;
             js_pontos[4] -= 3;
             js_pontos[5] -= 0;
+            codigo += 'B';
         }
         else if (r4 == 'História fraca') {
             js_pontos[0] -= 3;
@@ -283,6 +298,7 @@
             js_pontos[3] -= 0;
             js_pontos[4] -= 0;
             js_pontos[5] -= 0;
+            codigo += 'C';
         }
         else if (r4 == 'Repetição') {
             js_pontos[0] -= 2;
@@ -291,6 +307,7 @@
             js_pontos[3] -= 1;
             js_pontos[4] -= 0;
             js_pontos[5] -= 1;
+            codigo += 'D';
         }
         else {
             alert('Responda a pergunta 4, para enviar suas respostas')
@@ -305,6 +322,7 @@
             js_pontos[3] -= 3;
             js_pontos[4] -= 3;
             js_pontos[5] += 0;
+            codigo += 'A';
         }
         else if (r5 == 'Não') {
             js_pontos[0] += 0;
@@ -313,6 +331,7 @@
             js_pontos[3] += 1;
             js_pontos[4] += 1;
             js_pontos[5] += 0;
+            codigo += 'B';
         }
         else {
             alert('Responda a pergunta 5, para enviar suas respostas');
@@ -327,6 +346,7 @@
             js_pontos[3] += 1;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
+            codigo += 'A';
         }
         else if (r6 == 'Pouca experiência') {
             js_pontos[0] += 2;
@@ -335,6 +355,7 @@
             js_pontos[3] += 2;
             js_pontos[4] -= 2;
             js_pontos[5] += 3;
+            codigo += 'B';
         }
         else if (r6 == 'Experiência considerável') {
             js_pontos[0] += 3;
@@ -343,6 +364,7 @@
             js_pontos[3] += 3;
             js_pontos[4] += 1;
             js_pontos[5] += 2;
+            codigo += 'C';
         }
         else if (r6 == 'Muita experiência') {
             js_pontos[0] += 2;
@@ -351,6 +373,8 @@
             js_pontos[3] += 2;
             js_pontos[4] += 3;
             js_pontos[5] += 2;
+            codigo += 'D';
+
         }
         else {
             alert('Responda a pergunta 6, para enviar suas respostas')
@@ -363,9 +387,12 @@
             }
         }
 
+        but_enviar.onclick = "";
 
         jogoRecomendado = js_jogos[js_pontos.indexOf(pontos_ganhador)];
         sessionStorage.setItem('recomendacao', jogoRecomendado);
+        sessionStorage.setItem('codigo', codigo);
+
 
         fetch("/respostas/cadastrar", {
             method: "POST",
@@ -379,6 +406,7 @@
                 r4Server: r4,
                 r5Server: r5,
                 r6Server: r6,
+                codigoServer: codigo,
                 jrServer: jogoRecomendado,
                 usuarioServer: usuario
             }),
@@ -396,7 +424,7 @@
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-            });       
+            });
     }
 </script>
 

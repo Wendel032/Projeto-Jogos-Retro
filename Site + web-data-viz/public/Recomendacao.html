@@ -8,7 +8,7 @@
     <title>Jogos Retrô - Recomendação</title>
 </head>
 
-<body>
+<body alt="Imagem de fundo: consoles antigos de videogame (Reprodução: @robtek/Shutterstock)">
     <div class="ret_principal">
         <div class="ret_superior_recomendacao">
             <p class="titulo_geral">Com Base Em Seu Perfil Recomendo-lhe...</p>
@@ -39,33 +39,36 @@
             <div id="ret_revisao1">
                 <p class="subtitulo_geral">Suas Respostas:</p>
                 <p class="texto_pergunta"><b>1. Para você, qual experiência um jogo deve priorizar?</b></p>
-                <p id="rev1" class="rev">Sua Resposta: <i>Uma história envolvente</i></p>
+                <p class="rev">Sua Resposta: <i id="rev1">Uma história envolvente</i></p>
 
                 <p class="texto_pergunta"><b>2. Qual nível de dificuldade um bom jogo deve possuir?</b></p>
-                <p id="rev2" class="rev">Sua Resposta: <i>Causal – Sem foco em desafios</i></p>
+                <p class="rev">Sua Resposta: <i id="rev2">Causal – Sem foco em desafios</i></p>
 
                 <p class="texto_pergunta"><b>3. Você joga no celular sem nenhum acessório?</b></p>
-                <p id="rev3" class="rev">Sua Resposta: <i>Sim</i></p>
+                <p class="rev">Sua Resposta: <i id="rev3">Sim</i></p>
 
                 <p class="texto_pergunta"><b>4. O que você NÃO gosta em jogos?</b></p>
-                <p id="rev4" class="rev">Sua Resposta: <i>Violência</i></p>
+                <p class="rev">Sua Resposta: <i id="rev4">Violência</i></p>
 
                 <p class="texto_pergunta"><b>5. Gráficos 3D antigos te incomodam?</b></p>
-                <p id="rev5" class="rev">Sua Resposta: <i>Sim</i></p>
+                <p class="rev">Sua Resposta: <i id="rev5">Sim</i></p>
 
                 <p class="texto_pergunta"><b>6. Quanta experiência você tem com jogos no geral?</b></p>
-                <p id="rev6" class="rev">Sua Resposta: <i>Quase nenhuma experiência</i></p>
+                <p class="rev">Sua Resposta: <i id="rev6">Quase nenhuma experiência</i></p>
             </div>
 
             <div id="ret_revisao2">
                 <div class="card_revisao">
-                    <p>Código de acesso:</p>
-                    <p>1ABAF</p>
+                    <p>Quiz número:</p>
+                    <p id="rev_card1">30000</p>
                 </div>
                 <div class="card_revisao">
+                    <p>Código de acesso:</p>
+                    <p id="rev_card2">1ABABAB</p>
+                </div>
                 <div class="card_revisao">
-                    <p>Tempo:</p>
-                    <p>30 Segundos</p>
+                    <p>Concluído em:</p>
+                    <p id="rev_card3">30 Segundos</p>
                 </div>
             </div>
 
@@ -73,6 +76,8 @@
     </div>
 </body>
 <script>
+    var codigo = sessionStorage.getItem('codigo');
+
     if (sessionStorage.getItem('recomendacao') == 1) {
         titulo_recomendacao.innerHTML = 'Castlevania: Symphony of the Night';
         jogo_recomendacao.src = 'Capas/SOTN.jpg';
@@ -121,6 +126,57 @@
         texto2.innerHTML = `Este é, com certeza, um dos melhores RPGs já feitos — um clássico indiscutível. Chrono Trigger é uma excelente porta de entrada tanto para o gênero quanto para os jogos em geral. Tudo neste game é sólido: gameplay, história, música (a trilha sonora é um show à parte). 
         Todavia, para alguns, o jogo pode parecer um pouco simples. No entanto, é justamente nessa simplicidade que a obra encontra seu brilho. `;
     }
+
+    if (codigo) {
+        fetch("/dashboard/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                codigoServer: codigo
+            })
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    if (resposta[0]) {
+                        rev1.innerHTML = resposta[0].resposta1;
+                        rev2.innerHTML = resposta[0].resposta2;
+                        rev3.innerHTML = resposta[0].resposta3;
+                        rev4.innerHTML = resposta[0].resposta4;
+                        rev5.innerHTML = resposta[0].resposta5;
+                        rev6.innerHTML = resposta[0].resposta6;
+
+                        rev_card1.innerHTML = resposta[0].numeroQuiz;
+                        rev_card2.innerHTML = resposta[0].codigo;
+                        if (resposta[0].tempo < 60) {
+                            rev_card3.innerHTML = `${resposta[0].tempo} segundos`;
+                        } else { 
+                            rev_card3.innerHTML = `${(resposta[0].tempo / 60).toFixed(1)} minuto(s)`;
+                        }
+
+                    } else {
+                        alert('Código não encontrado');
+                    }
+
+                });
+            }
+            else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                response.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    } else {
+        alert('Código não encontrado');
+    }
+
 
     function inicio() {
         window.location.href = "index.html"

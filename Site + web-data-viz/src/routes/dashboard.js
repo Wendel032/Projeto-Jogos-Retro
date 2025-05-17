@@ -23,4 +23,8 @@ router.get("/acessos", function (req, res) {
     dashboardController.acessos(req, res);
 });
 
+router.post("/login", function (req, res) {
+    dashboardController.login(req, res);
+});
+
 module.exports = router;

@@ -10,7 +10,7 @@ function contar() {
 
 function tempoMedio() {
     var instrucao = `
-    SELECT ROUND(AVG(TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHorarioQuiz)), 0) AS tempo FROM RespostasQuiz JOIN Usuario
+    SELECT ROUND(AVG(TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz)), 0) AS tempo FROM RespostasQuiz JOIN Usuario
 	ON idUsuario = fkUsuario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -46,10 +46,20 @@ function acessos() {
     return database.executar(instrucao);
 }
 
+function login(codigo) {
+    var instrucao = `
+    SELECT nomeUsuario AS nome, idRespostasQuiz AS numeroQuiz, resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigo, TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz) AS tempo FROM Usuario JOIN RespostasQuiz ON idUsuario = idRespostasQuiz WHERE codigo = '${codigo}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     contar,
     tempoMedio,
     maisRecomendado,
     generos,
-    acessos
+    acessos,
+    login
 };
+
