@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Jogos Retro - Quiz</title>
 </head>
 
@@ -34,7 +34,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/sotnGif.gif" alt="gif"
+                <img class="gifJogos" src="gifs/sotnGif.gif" alt="gif"
                     title="Gif de Castlevania: Symphony of the Night, © Konami, 1997.">
             </div>
         </div>
@@ -56,7 +56,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/ctGif.gif" alt="gif"
+                <img class="gifJogos" src="gifs/ctGif.gif" alt="gif"
                     title="Gif de Chrono Trigger, © Square Co., Ltd., 1995.">
             </div>
         </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/fnftGif.gif" alt="gif"
+                <img class="gifJogos" src="gifs/fnftGif.gif" alt="gif"
                     title="Gif de Final Fantasy Tactics: The War of the Lions, © Square Enix Co., Ltd., 2007.">
             </div>
         </div>
@@ -96,7 +96,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/re2Gif.gif" alt="gif" title="Gif de Resident Evil 2, © Capcom, 1998.">
+                <img class="gifJogos" src="gifs/re2Gif.gif" alt="gif" title="Gif de Resident Evil 2, © Capcom, 1998.">
             </div>
         </div>
         <span class="linha"></span>
@@ -113,7 +113,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/oftGif.gif" alt="gif"
+                <img class="gifJogos" src="gifs/oftGif.gif" alt="gif"
                     title="Gif de The Legend of Zelda: Ocarina of Time, © Nintendo, 1998.">
             </div>
         </div>
@@ -135,7 +135,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="Gifs/mmxGif.gif" alt="gif" title="Gif de Mega Man X, © Capcom, 1993.">
+                <img class="gifJogos" src="gifs/mmxGif.gif" alt="gif" title="Gif de Mega Man X, © Capcom, 1993.">
             </div>
         </div>
         <span class="linha"></span>
@@ -227,7 +227,7 @@
         }
         else if (r2 == 'Normal - Com desafios esporádicos') {
             js_pontos[0] += 2;
-            js_pontos[1] += 0;
+            js_pontos[1] += 1;
             js_pontos[2] -= 1;
             js_pontos[3] += 3;
             js_pontos[4] += 1;
@@ -236,7 +236,7 @@
         }
         else if (r2 == 'Difícil - Desafios constantes') {
             js_pontos[0] += 0;
-            js_pontos[1] += 1;
+            js_pontos[1] += 2;
             js_pontos[2] += 3;
             js_pontos[3] += 0;
             js_pontos[4] += 3;
@@ -260,7 +260,7 @@
         }
         else if (r3 == 'Não') {
             js_pontos[0] += 0;
-            js_pontos[1] += 2;
+            js_pontos[1] += 0;
             js_pontos[2] += 0;
             js_pontos[3] += 0;
             js_pontos[4] += 1;
@@ -416,7 +416,7 @@
 
                 if (resposta.ok) {
                     setTimeout(() => {
-                        window.location = "Recomendacao.html";
+                        window.location = "recomendacao.html";
                     }, "500");
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro do quiz!";

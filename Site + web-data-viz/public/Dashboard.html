@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Estatísticas do Quiz</title>
 </head>
@@ -38,7 +38,7 @@
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                kpi1.innerHTML = `<b>${resposta[0].maisRecomendado}</b>Jogo mais Recomendado`
+                kpi1.innerHTML = `<b>${resposta[0].maisRecomendado}</b>Jogo mais Recomendado`;
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -54,9 +54,9 @@
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 if (resposta[0].tempo < 60) {
-                    kpi2.innerHTML = `<b>${resposta[0].tempo} segundos</b> Tempo Médio de conclusão do quiz`
+                    kpi2.innerHTML = `<b>${resposta[0].tempo} segundos</b> Tempo Médio de conclusão do quiz`;
                 } else {
-                    kpi2.innerHTML = `<b>${(resposta[0].tempo / 60).toFixed(1)} minutos</b> Tempo Médio de conclusão do quiz`
+                    kpi2.innerHTML = `<b>${(resposta[0].tempo / 60).toFixed(1)} minutos</b> Tempo Médio de conclusão do quiz`;
                 }
 
             });
@@ -72,8 +72,8 @@
     fetch(`/dashboard/acessos`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
-                kpi3.innerHTML = `<b>${resposta[0].acessos}</b> Número de quizzes iniciados`
-                kpi4.innerHTML = `<b>${((resposta[0].respostas / resposta[0].acessos) * 100).toFixed(0)}%</B> Dos quizzes iniciados foram completados`
+                kpi3.innerHTML = `<b>${resposta[0].acessos}</b> Número de quizzes iniciados`;
+                kpi4.innerHTML = `<b>${((resposta[0].respostas / resposta[0].acessos) * 100).toFixed(0)}%</B> Dos quizzes iniciados foram completados`;
             });
         } else {
             alert('Nenhum dado encontrado ou erro na API');
@@ -83,7 +83,7 @@
             console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
 
-    //Implementar Atualização no futuro
+    //Implementar atualização de gráficos no futuro
     // let proximaAtualizacao;
 
     obterDadosGrafico1()
@@ -117,7 +117,6 @@
 
         console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: ['SOTN', 'MMX', 'FFT', 'OFT', 'RE2', 'CT'],
             datasets: [
@@ -133,7 +132,6 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             dados.datasets[0].data[registro.numJogo - 1] = registro.vezesRecomendado;
@@ -147,7 +145,6 @@
         console.log(dados.datasets)
         console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'bar',
             data: dados,
@@ -177,7 +174,6 @@
             }
         };
 
-        // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
             document.getElementById('Barras'),
             config
@@ -213,10 +209,8 @@
 
         console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels
         let labels= [];
 
-        // Criando estrutura para plotar gráfico - dados
         let dados = {
             datasets: [{
                 data: []
@@ -228,22 +222,20 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.genero);
             dados.datasets[0].data.push(registro.vezesRecomendado);
         }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(dados.labels)
-        console.log('Dados:')
+        console.log('----------------------------------------------');
+        console.log('O gráfico será plotado com os respectivos valores:');
+        console.log('Labels:');
+        console.log(dados.labels);
+        console.log('Dados:');
         console.log(dados.datasets)
-        console.log('----------------------------------------------')
+        console.log('----------------------------------------------');
 
-        // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'pie',
             data: dados,
@@ -261,7 +253,6 @@
             }
         };
 
-        // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
             document.getElementById('Pizza'),
             config
@@ -272,10 +263,10 @@
 
 
     function iniciar() {
-        window.location.href = "index.html"
+         window.location = "index.html"
     }
     function anterior() {
-        window.location.href = "Recomendacao.html"
+         window.location = "recomendacao.html"
     }
 </script>
 

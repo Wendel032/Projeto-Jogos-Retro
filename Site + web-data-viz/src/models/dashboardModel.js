@@ -48,7 +48,7 @@ function acessos() {
 
 function login(codigo) {
     var instrucao = `
-    SELECT nomeUsuario AS nome, idRespostasQuiz AS numeroQuiz, resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigo, TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz) AS tempo FROM Usuario JOIN RespostasQuiz ON idUsuario = idRespostasQuiz WHERE codigo = '${codigo}';
+    SELECT nomeUsuario AS nome, idRespostasQuiz AS numeroQuiz, resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigo, TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz) AS tempo, fkjogo AS jogo FROM Usuario JOIN RespostasQuiz ON idUsuario = idRespostasQuiz WHERE codigo = '${codigo}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
