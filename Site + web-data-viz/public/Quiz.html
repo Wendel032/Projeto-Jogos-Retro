@@ -15,12 +15,12 @@
             <p class="subtitulo_geral">Quiz</p>
             <p class="subtitulo_geral">Qual game retrô mais combina com seu perfil?</p>
             <span class="linha"></span>
-            <p id="Cumprimento">Obrigado por realizar este quiz, divirta-se</p>
+            <p id="cumprimento">Obrigado por realizar este quiz, divirta-se</p>
         </div>
 
         <div class="pergunta">
             <div class="numeracao">1.</div>
-            <p class="texto_pergunta">Para você, qual experiência um jogo deve priorizar?</p><br>
+            <p class="texto_pergunta">Para você, qual experiência um jogo deve priorizar?</p>
             <form id="pergunta1" class="opcoes">
                 <span class="opcao"><input type="radio" name="p1" value="Uma história envolvente">
                     <label for="historia">Uma história envolvente</label></span>
@@ -42,7 +42,7 @@
 
         <div class="pergunta">
             <div class="numeracao">2.</div>
-            <p class="texto_pergunta">Qual nível de dificuldade um bom jogo deve possuir?</p><br>
+            <p class="texto_pergunta">Qual nível de dificuldade um bom jogo deve possuir?</p>
             <form id="pergunta2" class="opcoes">
                 <span class="opcao"><input type="radio" name="p2" value="Causal – Sem foco em desafios">
                     <label for="historia">Causal – Sem foco em desafios</label></span>
@@ -64,7 +64,7 @@
 
         <div class="pergunta">
             <div class="numeracao">3.</div>
-            <p class="texto_pergunta">Você joga no celular sem nenhum acessório?</p><br>
+            <p class="texto_pergunta">Você joga no celular sem nenhum acessório?</p>
             <form id="pergunta3" class="opcoes">
                 <span class="opcao"><input type="radio" name="p3" value="Sim">
                     <label for="historia">Sim</label></span>
@@ -82,7 +82,7 @@
 
         <div class="pergunta">
             <div class="numeracao">4.</div>
-            <p class="texto_pergunta">O que você NÃO gosta em jogos?</p><br>
+            <p class="texto_pergunta">O que você NÃO gosta em jogos?</p>
             <form id="pergunta4" class="opcoes">
                 <span class="opcao"><input type="radio" name="p4" value="Violência">
                     <label for="historia">Violência</label></span>
@@ -103,7 +103,7 @@
 
         <div class="pergunta">
             <div class="numeracao">5.</div>
-            <p class="texto_pergunta">Gráficos 3D antigos te incomodam?</p><br>
+            <p class="texto_pergunta">Gráficos 3D antigos te incomodam?</p>
             <form id="pergunta5" class="opcoes">
                 <span class="opcao"><input type="radio" name="p5" value="Sim">
                     <label for="historia">Sim</label></span>
@@ -121,7 +121,7 @@
 
         <div class="pergunta">
             <div class="numeracao">6.</div>
-            <p class="texto_pergunta">Quanta experiência você tem com jogos no geral?</p><br>
+            <p class="texto_pergunta">Quanta experiência você tem com jogos no geral?</p>
             <form id="pergunta6" class="opcoes">
                 <span class="opcao"><input type="radio" name="p6" value="Quase nenhuma experiência">
                     <label for="historia">Quase nenhuma experiência</label></span>
@@ -145,7 +145,7 @@
 </body>
 <script>
     if (sessionStorage.getItem('nome') && sessionStorage.getItem('acessos')) {
-        Cumprimento.innerHTML = `Parabéns, ${sessionStorage.getItem('nome')}, você é a ${sessionStorage.getItem('acessos')}° Pessoa a iniciar este quiz!`
+        cumprimento.innerHTML = `Parabéns, ${sessionStorage.getItem('nome')}, você é a ${sessionStorage.getItem('acessos')}° Pessoa a iniciar este quiz!`
     }
 
     var js_jogos = [1, 2, 3, 4, 5, 6];

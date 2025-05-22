@@ -28,11 +28,11 @@ function maisRecomendado() {
     return database.executar(instrucao);
 }
 
-function generos() {
+function preferencias() {
     var instrucao = `
-    SELECT j.genero AS genero, count(*) AS vezesRecomendado FROM Jogo j JOIN RespostasQuiz r 
+    SELECT r.resposta1 AS preferencia, count(*) AS vezesPreferida FROM Jogo j JOIN RespostasQuiz r 
 	ON j.idJogo = r.fkJogo
-	GROUP BY genero;
+	GROUP BY r.resposta1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -48,7 +48,7 @@ function acessos() {
 
 function login(codigo) {
     var instrucao = `
-    SELECT nomeUsuario AS nome, idRespostasQuiz AS numeroQuiz, resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigo, TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz) AS tempo, fkjogo AS jogo FROM Usuario JOIN RespostasQuiz ON idUsuario = idRespostasQuiz WHERE codigo = '${codigo}';
+    SELECT nomeUsuario AS nome, idRespostasQuiz AS numeroQuiz, resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigo, TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz) AS tempo, fkjogo AS jogo FROM Usuario JOIN RespostasQuiz ON idUsuario = fkUsuario WHERE codigo = '${codigo}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -58,7 +58,7 @@ module.exports = {
     contar,
     tempoMedio,
     maisRecomendado,
-    generos,
+    preferencias,
     acessos,
     login
 };

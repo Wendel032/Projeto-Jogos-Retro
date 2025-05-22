@@ -15,8 +15,8 @@ router.get("/maisRecomendado", function (req, res) {
     dashboardController.maisRecomendado(req, res);
 });
 
-router.get("/generos", function (req, res) {
-    dashboardController.generos(req, res);
+router.get("/preferencias", function (req, res) {
+    dashboardController.preferencias(req, res);
 });
 
 router.get("/acessos", function (req, res) {

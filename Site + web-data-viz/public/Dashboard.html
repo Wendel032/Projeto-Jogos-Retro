@@ -56,7 +56,7 @@
                 if (resposta[0].tempo < 60) {
                     kpi2.innerHTML = `<b>${resposta[0].tempo} segundos</b> Tempo Médio de conclusão do quiz`;
                 } else {
-                    kpi2.innerHTML = `<b>${(resposta[0].tempo / 60).toFixed(1)} minutos</b> Tempo Médio de conclusão do quiz`;
+                    kpi2.innerHTML = `<b>${(resposta[0].tempo / 60).toFixed(1)} minuto(s)</b> Tempo Médio de conclusão do quiz`;
                 }
 
             });
@@ -83,18 +83,10 @@
             console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
 
-    //Implementar atualização de gráficos no futuro
-    // let proximaAtualizacao;
-
     obterDadosGrafico1()
     obterDadosGrafico2()
 
     function obterDadosGrafico1() {
-
-
-        /*if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }*/
 
         fetch(`/dashboard/contar`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -179,17 +171,12 @@
             config
         );
 
-        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
 
     function obterDadosGrafico2() {
 
 
-        /*if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }*/
-
-        fetch(`/dashboard/generos`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/dashboard/preferencias`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -224,8 +211,8 @@
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.genero);
-            dados.datasets[0].data.push(registro.vezesRecomendado);
+            labels.push(registro.preferencia);
+            dados.datasets[0].data.push(registro.vezesPreferida);
         }
 
         console.log('----------------------------------------------');
@@ -247,7 +234,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'Gêneros Mais Recomendados'
+                        text: 'O Que As Pessoas Buscam Em Um Jogo'
                     }
                 }
             }
@@ -258,7 +245,6 @@
             config
         );
 
-        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
 
 

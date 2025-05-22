@@ -24,8 +24,8 @@ function maisRecomendado(req, res) {
     })
 }
 
-function generos(req, res) {
-    dashboardModel.generos().then(function (resultado) {
+function preferencias(req, res) {
+    dashboardModel.preferencias().then(function (resultado) {
         res.status(200).json(resultado);
     }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);
@@ -59,7 +59,7 @@ module.exports = {
     contar,
     tempoMedio,
     maisRecomendado,
-    generos,
+    preferencias,
     acessos,
     login
 }
