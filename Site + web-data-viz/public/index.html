@@ -10,23 +10,39 @@
 
 <body alt="Imagem de fundo: consoles antigos de videogame (Reprodução: @robtek/Shutterstock)">
     <div class="ret_principal">
-        <div class="ret_secundario">
+        <div id="modo_inicio" class="ret_secundario">
             <p id="titulo_inicio">JOGOS RETRÔ</p>
             <p id="subtitulo">O Frescor do Passado</p>
-            <p id="texto">Os gamers procuram constantemente novos lançamentos com as mais novas tecnologias e inovações
+            <p id="texto">Os gamers procuram constantemente novos lançamentos com as mais novas tecnologias e
+                inovações
                 do mercado, em sua visão, os novos games devem ser maiores em todos os quesitos, porém, o que muitos
-                ignoram é que, nem sempre, ser maior significa ser melhor e, as vezes, olhar para o passado é o melhor
-                caminho para construir um bom futuro. Por esse motivo, elaborei um quiz para, de acordo com seu perfil,
+                ignoram é que, nem sempre, ser maior significa ser melhor e, as vezes, olhar para o passado é o
+                melhor
+                caminho para construir um bom futuro. Por esse motivo, elaborei um quiz para, de acordo com seu
+                perfil,
                 recomendar-lhe um bom game retrô.</p>
             <div id="interativos">
                 <div class="interativo">
                     <input type="text" id="ipt_nome" class="ipt_inicio" placeholder="Seu Nome">
-                    <button onclick="quiz()" id="but_iniciar" class="but_inicio">Iniciar Quiz</button>
+                    <button onclick="iniciar_cadastro()" id="but_iniciar" class="but_inicio">Iniciar Quiz</button>
                 </div>
                 <div class="interativo">
-                    <input type="text" id="ipt_codigo" class="ipt_inicio" placeholder="Código de Acesso">
+                    <input type="password" id="ipt_codigo" class="ipt_inicio" placeholder="Código de Acesso">
                     <button onclick="login()" id="but_codigo" class="but_inicio">Rever Repostas</button>
                 </div>
+            </div>
+            <div id="interativos2">
+                <input type="text" id="ipt_email" class="ipt_inicio" placeholder="Email">
+                <input type="password" id="ipt_senha" class="ipt_inicio" placeholder="Senha">
+                <button onclick="login()" id="but_codigo" class="but_inicio">Rever Repostas</button>
+            </div>
+            <div class="ops_login">
+                <form id="tipos_login" class="ops_login">
+                    <input type="radio" name="op_login" value="codigo" onchange="opcoes_login()" checked>
+                    <span>Login Com Código</span>
+                    <input type="radio" name="op_login" value="senha" onchange="opcoes_login()">
+                    <span>Login Com Email e Senha</span>
+                </form>
             </div>
         </div>
         <div class="ret_secundario">
@@ -34,14 +50,24 @@
                 title="Capa do jogo Castlevania: Symphony of the Night, © Konami, 1997."></img>
             <b id="legenda_jogo">Castlevania: Symphony of the Night - 1997</b>
         </div>
-    </div>
+        <div id="modo_cadastro" class="ret_secundario" style="display: none;">
+            <div id="div_cadastro">
+                <p class="titulo_geral">CADASTRO</p>
+                <span>Cadastre-se para realizar o quiz</span>
+                <input type="text" placeholder="Nome" id="ipt_casNome" class="ipt_cadastro">
+                <input type="text" placeholder="Email" id="ipt_casEmail" class="ipt_cadastro">
+                <input type="text" placeholder="Senha" id="ipt_casSenha" class="ipt_cadastro">
+                <input type="text" placeholder="Repita Sua Senha" id="ipt_repSenha" class="ipt_cadastro">
+                <button class="but_cadastro">INICIAR QUIZ</button>
+            </div>
+        </div>
 </body>
 <script>
     var caso = Number((Math.random() * 5).toFixed(0));
     switch (caso) {
         case 0:
             img_jogo.src = "capas/CT.jpg";
-            img_jogo.title = "Capa oficial de Chrono Trigger, © Square Co., Ltd., 1995.";
+            img_jogo.title = "Capa oficial de Chrono Trigger (versão de DS), © Square Co., Ltd., 2008.";
             legenda_jogo.innerHTML = 'Chrono Trigger - 1995';
             break;
         case 1:
@@ -73,6 +99,16 @@
 
     var qtdAcessos = [];
 
+    function opcoes_login() {
+        if (tipos_login.op_login.value == 'codigo') {
+            interativos.style.display = 'flex';
+            interativos2.style.display = 'none';
+        } else {
+            interativos.style.display = 'none';
+            interativos2.style.display = 'flex';
+        }
+    }
+
     function captarAcessos() {
         fetch(`/dashboard/acessos`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -88,7 +124,19 @@
             });
     }
 
-    function quiz() {
+    function iniciar_cadastro() {
+        var nomeVar = ipt_nome.value;
+        if (nomeVar) {
+            ipt_casNome.value = ipt_nome.value
+            modo_inicio.style.display = 'none';
+            modo_cadastro.style.display = 'flex';
+        }
+        else {
+            alert('Insira seu nome para iniciar o quiz');
+        }
+    }
+
+    /*function quiz() {
         var nomeVar = ipt_nome.value;
         if (nomeVar) {
             but_iniciar.onclick = "";
@@ -124,9 +172,9 @@
                     console.log(`#ERRO: ${resposta}`);
                 });
         } else {
-            alert('Insira seu nome para iniciar o quiz')
+            alert('Insira seu nome para iniciar o quiz');
         }
-    }
+    }*/
 
     function login() {
         var js_codigo = ipt_codigo.value;
