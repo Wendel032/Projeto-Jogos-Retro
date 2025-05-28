@@ -33,24 +33,44 @@ function preferencias(req, res) {
 }
 
 function acessos(req, res) {
-    dashboardModel.acessos().then(function(resultado){
+    dashboardModel.acessos().then(function (resultado) {
         res.status(200).json(resultado);
-    }).catch(function(erro){
+    }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);
     })
 }
 
-function login(req, res) {
+function loginCodigo(req, res) {
     var codigo = req.body.codigoServer;
 
     if (codigo == undefined) {
         res.status(400).send("Seu código está undefined!");
     }
 
-    dashboardModel.login(codigo).then(function(resultado){
+    dashboardModel.loginCodigo(codigo).then(function (resultado) {
         console.log(resultado);
         res.status(200).json(resultado);
-    }).catch(function(erro){
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
+function loginEmailSenha(req, res) {
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    }
+
+    if (senha == undefined) {
+        res.status(400).send("Seu senha está undefined!");
+    }
+
+    dashboardModel.loginEmailSenha(email, senha).then(function (resultado) {
+        console.log(resultado);
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);
     })
 }
@@ -61,5 +81,6 @@ module.exports = {
     maisRecomendado,
     preferencias,
     acessos,
-    login
+    loginCodigo,
+    loginEmailSenha
 }

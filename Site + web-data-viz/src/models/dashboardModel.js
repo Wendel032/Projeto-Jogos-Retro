@@ -46,9 +46,17 @@ function acessos() {
     return database.executar(instrucao);
 }
 
-function login(codigo) {
+function loginCodigo(codigo) {
     var instrucao = `
     SELECT nomeUsuario AS nome, idRespostasQuiz AS numeroQuiz, resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigo, TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz) AS tempo, fkjogo AS jogo FROM Usuario JOIN RespostasQuiz ON idUsuario = fkUsuario WHERE codigo = '${codigo}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function loginEmailSenha(email, senha) {
+    var instrucao = `
+    SELECT nomeUsuario AS nome, idRespostasQuiz AS numeroQuiz, resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, codigo, TIMESTAMPDIFF(SECOND, dtHoraCadastro, dtHoraQuiz) AS tempo, fkjogo AS jogo FROM Usuario JOIN RespostasQuiz ON idUsuario = fkUsuario WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -60,6 +68,7 @@ module.exports = {
     maisRecomendado,
     preferencias,
     acessos,
-    login
+    loginCodigo,
+    loginEmailSenha
 };
 

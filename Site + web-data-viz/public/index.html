@@ -24,17 +24,17 @@
             <div id="interativos">
                 <div class="interativo">
                     <input type="text" id="ipt_nome" class="ipt_inicio" placeholder="Seu Nome">
-                    <button onclick="iniciar_cadastro()" id="but_iniciar" class="but_inicio">Iniciar Quiz</button>
+                    <button onclick="iniciar_cadastro()" class="but_inicio">Iniciar Quiz</button>
                 </div>
                 <div class="interativo">
                     <input type="password" id="ipt_codigo" class="ipt_inicio" placeholder="Código de Acesso">
-                    <button onclick="login()" id="but_codigo" class="but_inicio">Rever Repostas</button>
+                    <button onclick="login_codigo()" id="but_codigo" class="but_inicio">Rever Repostas</button>
                 </div>
             </div>
             <div id="interativos2">
                 <input type="text" id="ipt_email" class="ipt_inicio" placeholder="Email">
                 <input type="password" id="ipt_senha" class="ipt_inicio" placeholder="Senha">
-                <button onclick="login()" id="but_codigo" class="but_inicio">Rever Repostas</button>
+                <button onclick="login_emailSenha()" id="but_codigo" class="but_inicio">Rever Repostas</button>
             </div>
             <div class="ops_login">
                 <form id="tipos_login" class="ops_login">
@@ -56,9 +56,9 @@
                 <span>Cadastre-se para realizar o quiz</span>
                 <input type="text" placeholder="Nome" id="ipt_casNome" class="ipt_cadastro">
                 <input type="text" placeholder="Email" id="ipt_casEmail" class="ipt_cadastro">
-                <input type="text" placeholder="Senha" id="ipt_casSenha" class="ipt_cadastro">
-                <input type="text" placeholder="Repita Sua Senha" id="ipt_repSenha" class="ipt_cadastro">
-                <button class="but_cadastro">INICIAR QUIZ</button>
+                <input type="password" placeholder="Senha" id="ipt_casSenha" class="ipt_cadastro">
+                <input type="password" placeholder="Repita Sua Senha" id="ipt_repSenha" class="ipt_cadastro">
+                <button onclick="quiz()" id="but_iniciar" class="but_cadastro">INICIAR QUIZ</button>
             </div>
         </div>
 </body>
@@ -125,8 +125,8 @@
     }
 
     function iniciar_cadastro() {
-        var nomeVar = ipt_nome.value;
-        if (nomeVar) {
+        var js_nome = ipt_nome.value;
+        if (js_nome) {
             ipt_casNome.value = ipt_nome.value
             modo_inicio.style.display = 'none';
             modo_cadastro.style.display = 'flex';
@@ -136,11 +136,27 @@
         }
     }
 
-    /*function quiz() {
-        var nomeVar = ipt_nome.value;
-        if (nomeVar) {
+    function quiz() {
+        var js_nome = ipt_casNome.value;
+        var js_email = ipt_casEmail.value;
+        var js_senha = ipt_casSenha.value;
+        var js_repSenha = ipt_repSenha.value
+
+        if (!js_nome || !js_email || !js_senha || !js_repSenha) {
+            alert('Complete todos os campos para prosseguir');
+        }
+        else if (js_email.length < 5 || !js_email.includes('@')) {
+            alert('Insira um email válido para prosseguir');
+        }
+        else if (js_senha.length < 5) {
+            alert('A senha deve possuir ao menos 5 caracteres');
+        }
+        else if (js_repSenha != js_senha) {
+            alert('Os campos de senha não coincidem');
+        }
+        else {
             but_iniciar.onclick = "";
-            sessionStorage.setItem('nome', nomeVar);
+            sessionStorage.setItem('nome', js_nome);
 
             fetch("/usuarios2/cadastrar", {
                 method: "POST",
@@ -148,7 +164,9 @@
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    nomeServer: nomeVar
+                    nomeServer: js_nome,
+                    emailServer: js_email,
+                    senhaServer: js_senha
                 }),
             })
                 .then(function (resposta) {
@@ -171,16 +189,14 @@
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
                 });
-        } else {
-            alert('Insira seu nome para iniciar o quiz');
         }
-    }*/
+    }
 
-    function login() {
+    function login_codigo() {
         var js_codigo = ipt_codigo.value;
 
         if (js_codigo) {
-            fetch("/dashboard/login", {
+            fetch("/dashboard/loginCodigo", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -221,6 +237,55 @@
             alert('Insira o código de acesso para rever suas respostas');
         }
     }
+
+    function login_emailSenha() {
+        var js_email = ipt_email.value;
+        var js_senha = ipt_senha.value;
+
+        if (js_email && js_senha) {
+            fetch("/dashboard/loginEmailSenha", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: js_email,
+                    senhaServer: js_senha
+                })
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        if (resposta[0]) {
+                            alert(`Bem-vindo(a) de volta, ${resposta[0].nome}`)
+                            sessionStorage.setItem('codigo', resposta[0].codigo);
+                            sessionStorage.setItem('recomendacao', resposta[0].jogo);
+                            setTimeout(() => {
+                                window.location = "recomendacao.html";
+                            }, "500");
+
+                        } else {
+                            alert('Email ou senha inválidos');
+                        }
+
+                    });
+                }
+                else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    response.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        } else {
+            alert('Insira email e senha para rever suas respostas');
+        }
+    }
+
 
 </script>
 
