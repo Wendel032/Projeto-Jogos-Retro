@@ -1,5 +1,19 @@
 var usuario2Model = require("../models/usuario2Model");
 
+function verificarEmail(req, res) {
+    var email = req.body.emailServer;
+
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    }
+
+    usuario2Model.verificarEmail(email).then(function (resultado) {
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
@@ -23,5 +37,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
+    verificarEmail,
     cadastrar
 }

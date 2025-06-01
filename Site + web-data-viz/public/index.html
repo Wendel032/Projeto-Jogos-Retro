@@ -46,9 +46,8 @@
             </div>
         </div>
         <div class="ret_secundario">
-            <img id="img_jogo" src="capas/SOTN.jpg" alt="jogo"
-                title="Capa do jogo Castlevania: Symphony of the Night, © Konami, 1997."></img>
-            <b id="legenda_jogo">Castlevania: Symphony of the Night - 1997</b>
+            <img id="img_jogo" src="" alt="jogo" title=""></img>
+            <b id="legenda_jogo"></b>
         </div>
         <div id="modo_cadastro" class="ret_secundario" style="display: none;">
             <div id="div_cadastro">
@@ -109,19 +108,38 @@
         }
     }
 
-    function captarAcessos() {
-        fetch(`/dashboard/acessos`, { cache: 'no-store' }).then(function (response) {
+    function captarAcessos(email) {
+        fetch("/usuarios2/verificarEmail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email
+            })
+        }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    qtdAcessos = resposta;
+                    if (resposta[0]) {
+                        setTimeout(() => {
+                            sessionStorage.setItem('acessos', resposta[0].idUsuario);
+                        }, "400"); 
+                    }
                 });
-            } else {
-                alert('Nenhum dado encontrado ou erro na API');
             }
+            else {
+
+                console.log("Houve um erro ao tentar realizar a verificação!");
+
+                response.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
         })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados: ${error.message}`);
-            });
+
     }
 
     function iniciar_cadastro() {
@@ -158,37 +176,64 @@
             but_iniciar.onclick = "";
             sessionStorage.setItem('nome', js_nome);
 
-            fetch("/usuarios2/cadastrar", {
+            fetch("/usuarios2/verificarEmail", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    nomeServer: js_nome,
-                    emailServer: js_email,
-                    senhaServer: js_senha
-                }),
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-
-                    if (resposta.ok) {
-                        captarAcessos();
-
-                        setTimeout(() => {
-                            sessionStorage.setItem('acessos', qtdAcessos[0].acessos);
-                        }, "400");
-
-                        setTimeout(() => {
-                            window.location = "quiz.html";
-                        }, "500");
-                    } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
+                    emailServer: js_email
                 })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        if (resposta[0]) {
+                            alert('Esse email já foi cadastrado!');
+                            but_iniciar.onclick = quiz;
+                        } else {
+                            fetch("/usuarios2/cadastrar", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                    nomeServer: js_nome,
+                                    emailServer: js_email,
+                                    senhaServer: js_senha
+                                }),
+                            })
+                                .then(function (resposta) {
+                                    console.log("resposta: ", resposta);
+
+                                    if (resposta.ok) {
+                                        captarAcessos(js_email);
+
+                                        setTimeout(() => {
+                                            window.location = "quiz.html";
+                                        }, "500");
+                                    } else {
+                                        throw "Houve um erro ao tentar realizar o cadastro!";
+                                    }
+                                })
+                                .catch(function (resposta) {
+                                    console.log(`#ERRO: ${resposta}`);
+                                });
+                        }
+
+                    });
+                }
+                else {
+
+                    console.log("Houve um erro ao tentar realizar a verificação!");
+
+                    response.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
         }
     }
 
@@ -256,13 +301,20 @@
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         if (resposta[0]) {
-                            alert(`Bem-vindo(a) de volta, ${resposta[0].nome}`)
-                            sessionStorage.setItem('codigo', resposta[0].codigo);
-                            sessionStorage.setItem('recomendacao', resposta[0].jogo);
-                            setTimeout(() => {
-                                window.location = "recomendacao.html";
-                            }, "500");
-
+                            if (resposta[0].codigo) { //Caso o usuário tenha realizado o quiz
+                                alert(`Bem-vindo(a) de volta, ${resposta[0].nome}`)
+                                sessionStorage.setItem('codigo', resposta[0].codigo);
+                                sessionStorage.setItem('recomendacao', resposta[0].jogo);
+                                setTimeout(() => {
+                                    window.location = "recomendacao.html";
+                                }, "500");
+                            } else {
+                                sessionStorage.setItem('nome', resposta[0].nome);
+                                sessionStorage.setItem('acessos', resposta[0].idUsuario);
+                                setTimeout(() => {
+                                    window.location = "quiz.html";
+                                }, "500");
+                            }
                         } else {
                             alert('Email ou senha inválidos');
                         }
