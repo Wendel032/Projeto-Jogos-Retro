@@ -2,7 +2,7 @@ var database = require("../database/config")
 
 function verificarEmail(email) {
     var instrucao = `
-    SELECT idUsuario FROM USUARIO WHERE email = '${email}';
+    SELECT idUsuario FROM Usuario WHERE email = '${email}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

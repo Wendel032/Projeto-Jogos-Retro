@@ -34,7 +34,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="gifs/sotnGif.gif" alt="gif"
+                <img class="gifJogos" src="assets/gifs/sotnGif.gif" alt="gif"
                     title="Gif de Castlevania: Symphony of the Night, © Konami, 1997.">
             </div>
         </div>
@@ -56,7 +56,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="gifs/ctGif.gif" alt="gif"
+                <img class="gifJogos" src="assets/gifs/ctGif.gif" alt="gif"
                     title="Gif de Chrono Trigger, © Square Co., Ltd., 1995.">
             </div>
         </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="gifs/fnftGif.gif" alt="gif"
+                <img class="gifJogos" src="assets/gifs/fnftGif.gif" alt="gif"
                     title="Gif de Final Fantasy Tactics: The War of the Lions, © Square Enix Co., Ltd., 2007.">
             </div>
         </div>
@@ -96,7 +96,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="gifs/re2Gif.gif" alt="gif" title="Gif de Resident Evil 2, © Capcom, 1998.">
+                <img class="gifJogos" src="assets/gifs/re2Gif.gif" alt="gif" title="Gif de Resident Evil 2, © Capcom, 1998.">
             </div>
         </div>
         <span class="linha"></span>
@@ -113,7 +113,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="gifs/oftGif.gif" alt="gif"
+                <img class="gifJogos" src="assets/gifs/oftGif.gif" alt="gif"
                     title="Gif de The Legend of Zelda: Ocarina of Time, © Nintendo, 1998.">
             </div>
         </div>
@@ -135,7 +135,7 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="gifs/mmxGif.gif" alt="gif" title="Gif de Mega Man X, © Capcom, 1993.">
+                <img class="gifJogos" src="assets/gifs/mmxGif.gif" alt="gif" title="Gif de Mega Man X, © Capcom, 1993.">
             </div>
         </div>
         <span class="linha"></span>
@@ -172,7 +172,6 @@
             js_pontos[3] += 2;
             js_pontos[4] += 2;
             js_pontos[5] += 2;
-            codigo += 'A';
         }
         else if (r1 == 'Uma jogabilidade divertida') {
             js_pontos[0] += 3;
@@ -181,7 +180,6 @@
             js_pontos[3] += 3;
             js_pontos[4] += 0;
             js_pontos[5] += 3;
-            codigo += 'B';
         }
         else if (r1 == 'Um visual interessante') {
             js_pontos[0] += 3;
@@ -190,7 +188,6 @@
             js_pontos[3] += 1;
             js_pontos[4] += 1;
             js_pontos[5] += 2;
-            codigo += 'C';
         }
         else if (r1 == 'Uma atmosfera imersiva') {
             js_pontos[0] += 2;
@@ -199,7 +196,6 @@
             js_pontos[3] += 2;
             js_pontos[4] += 3;
             js_pontos[5] += 2;
-            codigo += 'D';
         }
         else {
             alert('Responda a pergunta 1, para enviar suas respostas')
@@ -214,7 +210,6 @@
             js_pontos[3] += 0;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
-            codigo += 'A';
         }
         else if (r2 == 'Fácil - Pouco desafiador') {
             js_pontos[0] += 2;
@@ -223,7 +218,6 @@
             js_pontos[3] += 2;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
-            codigo += 'B';
         }
         else if (r2 == 'Normal - Com desafios esporádicos') {
             js_pontos[0] += 2;
@@ -232,7 +226,6 @@
             js_pontos[3] += 3;
             js_pontos[4] += 1;
             js_pontos[5] += 1;
-            codigo += 'C';
         }
         else if (r2 == 'Difícil - Desafios constantes') {
             js_pontos[0] += 0;
@@ -241,7 +234,6 @@
             js_pontos[3] += 0;
             js_pontos[4] += 3;
             js_pontos[5] -= 3;
-            codigo += 'D';
         }
         else {
             alert('Responda a pergunta 2, para enviar suas respostas');
@@ -256,7 +248,6 @@
             js_pontos[3] -= 3;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
-            codigo += 'A';
         }
         else if (r3 == 'Não') {
             js_pontos[0] += 0;
@@ -265,7 +256,6 @@
             js_pontos[3] += 0;
             js_pontos[4] += 1;
             js_pontos[5] += 0;
-            codigo += 'B';
         }
         else {
             alert('Responda a pergunta 3, para enviar suas respostas')
@@ -280,7 +270,6 @@
             js_pontos[3] -= 0;
             js_pontos[4] -= 3;
             js_pontos[5] -= 0;
-            codigo += 'A';
         }
         else if (r4 == 'Jogabilidade Complexa') {
             js_pontos[0] -= 0;
@@ -289,7 +278,6 @@
             js_pontos[3] -= 1;
             js_pontos[4] -= 3;
             js_pontos[5] -= 0;
-            codigo += 'B';
         }
         else if (r4 == 'História fraca') {
             js_pontos[0] -= 3;
@@ -298,7 +286,6 @@
             js_pontos[3] -= 0;
             js_pontos[4] -= 0;
             js_pontos[5] -= 0;
-            codigo += 'C';
         }
         else if (r4 == 'Repetição') {
             js_pontos[0] -= 2;
@@ -307,7 +294,6 @@
             js_pontos[3] -= 1;
             js_pontos[4] -= 0;
             js_pontos[5] -= 1;
-            codigo += 'D';
         }
         else {
             alert('Responda a pergunta 4, para enviar suas respostas')
@@ -322,7 +308,6 @@
             js_pontos[3] -= 3;
             js_pontos[4] -= 3;
             js_pontos[5] += 0;
-            codigo += 'A';
         }
         else if (r5 == 'Não') {
             js_pontos[0] += 0;
@@ -331,7 +316,6 @@
             js_pontos[3] += 1;
             js_pontos[4] += 1;
             js_pontos[5] += 0;
-            codigo += 'B';
         }
         else {
             alert('Responda a pergunta 5, para enviar suas respostas');
@@ -346,7 +330,6 @@
             js_pontos[3] += 1;
             js_pontos[4] -= 3;
             js_pontos[5] += 3;
-            codigo += 'A';
         }
         else if (r6 == 'Pouca experiência') {
             js_pontos[0] += 2;
@@ -355,7 +338,6 @@
             js_pontos[3] += 2;
             js_pontos[4] -= 2;
             js_pontos[5] += 3;
-            codigo += 'B';
         }
         else if (r6 == 'Experiência considerável') {
             js_pontos[0] += 3;
@@ -364,7 +346,6 @@
             js_pontos[3] += 3;
             js_pontos[4] += 1;
             js_pontos[5] += 2;
-            codigo += 'C';
         }
         else if (r6 == 'Muita experiência') {
             js_pontos[0] += 2;
@@ -373,7 +354,6 @@
             js_pontos[3] += 2;
             js_pontos[4] += 3;
             js_pontos[5] += 2;
-            codigo += 'D';
 
         }
         else {
@@ -388,6 +368,11 @@
         }
 
         but_enviar.onclick = "";
+        var js_caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*-+=';//caracteres para o código
+
+        for (let i = 1; i <= 6; i++) {
+            codigo += js_caracteres[(Math.random() * (js_caracteres.length - 1)).toFixed(0)];
+        }
 
         jogoRecomendado = js_jogos[js_pontos.indexOf(pontos_ganhador)];
         sessionStorage.setItem('recomendacao', jogoRecomendado);
