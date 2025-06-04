@@ -122,8 +122,8 @@
                 response.json().then(function (resposta) {
                     if (resposta[0]) {
                         setTimeout(() => {
-                            sessionStorage.setItem('acessos', resposta[0].idUsuario);
-                        }, "400"); 
+                            sessionStorage.acessos = resposta[0].idUsuario;
+                        }, "300"); 
                     }
                 });
             }
