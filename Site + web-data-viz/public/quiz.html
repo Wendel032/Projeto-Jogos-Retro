@@ -96,7 +96,8 @@
         </div>
         <div class="comentario">
             <div class="caixa_comentario">
-                <img class="gifJogos" src="assets/gifs/re2Gif.gif" alt="gif" title="Gif de Resident Evil 2, © Capcom, 1998.">
+                <img class="gifJogos" src="assets/gifs/re2Gif.gif" alt="gif"
+                    title="Gif de Resident Evil 2, © Capcom, 1998.">
             </div>
         </div>
         <span class="linha"></span>
@@ -130,7 +131,7 @@
                 <span class="opcao"><input type="radio" name="p6" value="Experiência considerável">
                     <span>Experiência considerável</span></span>
                 <span class="opcao"><input type="radio" name="p6" value="Muita experiência">
-                    <span>Muita experiência</span></span> 
+                    <span>Muita experiência</span></span>
             </form>
         </div>
         <div class="comentario">
@@ -144,14 +145,14 @@
     </div>
 </body>
 <script>
-    if (sessionStorage.getItem('nome') && sessionStorage.getItem('acessos')) {
-        cumprimento.innerHTML = `Parabéns, ${sessionStorage.getItem('nome')}, você é a ${sessionStorage.getItem('acessos')}° Pessoa a iniciar este quiz!`
+    if (sessionStorage.nome && sessionStorage.acessos) {
+        cumprimento.innerHTML = `Parabéns, ${sessionStorage.nome}, você é a ${sessionStorage.acessos}° Pessoa a iniciar este quiz!`
     }
 
     var js_jogos = [1, 2, 3, 4, 5, 6];
     var js_pontos = [0, 0, 0, 0, 0, 0];
     var jogoRecomendado = '';
-    var usuario = sessionStorage.getItem('acessos');
+    var usuario = sessionStorage.acessos;
 
     function recomendar() {
 
@@ -162,7 +163,7 @@
         var r5 = pergunta5.p5.value;
         var r6 = pergunta6.p6.value;
         var pontos_ganhador = 0;
-        var codigo = sessionStorage.getItem('acessos');
+        var codigo = sessionStorage.acessos;
 
         //Pergunta 1
         if (r1 == 'Uma história envolvente') {
@@ -375,8 +376,8 @@
         }
 
         jogoRecomendado = js_jogos[js_pontos.indexOf(pontos_ganhador)];
-        sessionStorage.setItem('recomendacao', jogoRecomendado);
-        sessionStorage.setItem('codigo', codigo);
+        sessionStorage.recomendacao = jogoRecomendado;
+        sessionStorage.codigo = codigo;
 
 
         fetch("/respostas/cadastrar", {
@@ -404,7 +405,9 @@
                         window.location = "recomendacao.html";
                     }, "500");
                 } else {
+                    alert('Algo deu errado ou você já realizou este quiz');
                     throw "Houve um erro ao tentar realizar o cadastro do quiz!";
+                    but_enviar.onclick = '';
                 }
             })
             .catch(function (resposta) {

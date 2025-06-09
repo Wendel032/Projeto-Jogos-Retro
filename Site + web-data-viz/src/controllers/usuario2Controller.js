@@ -36,7 +36,22 @@ function cadastrar(req, res) {
     })
 }
 
+function atualizarHorario(req, res) {
+    var id = req.body.idServer;
+
+    if (id == undefined) {
+        res.status(400).send("O id está undefined");
+    }
+
+    usuario2Model.atualizarHorario(id).then(function (resposta) {
+        res.status(200).send("Horário atualizado com sucesso");
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
     verificarEmail,
-    cadastrar
+    cadastrar,
+    atualizarHorario
 }

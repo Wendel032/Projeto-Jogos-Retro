@@ -82,9 +82,9 @@
     </div>
 </body>
 <script>
-    var codigo = sessionStorage.getItem('codigo');
+    var codigo = sessionStorage.codigo;
 
-    if (sessionStorage.getItem('recomendacao') == 1) {
+    if (sessionStorage.recomendacao == 1) {
         titulo_recomendacao.innerHTML = 'Castlevania: Symphony of the Night';
         document.body.style.backgroundImage = 'url("assets/fundos/fundoSOTN.jpg")';
         jogo_recomendacao.src = 'assets/capas/SOTN.jpg';
@@ -104,7 +104,7 @@
                 </span>`;
 
     }
-    if (sessionStorage.getItem('recomendacao') == 2) {
+    if (sessionStorage.recomendacao == 2) {
         titulo_recomendacao.innerHTML = 'Mega Man X';
         document.body.style.backgroundImage = 'url("assets/fundos/fundoMMX.jpg")';
         jogo_recomendacao.src = 'assets/capas/MMX.jpg';
@@ -123,7 +123,7 @@
                     <p>▼ História Simples</p>
                 </span>`;
     }
-    if (sessionStorage.getItem('recomendacao') == 3) {
+    if (sessionStorage.recomendacao == 3) {
         titulo_recomendacao.innerHTML = 'Final Fantasy Tactics';
         document.body.style.backgroundImage = 'url("assets/fundos/fundoFFT.jpg")';
         jogo_recomendacao.src = 'assets/capas/FFT.jpg';
@@ -142,7 +142,7 @@
                     <p>▼ Sistemas Complexos (Dica: Pesquise Sobre Antes de Jogar)</p>
                 </span>`;
     }
-    if (sessionStorage.getItem('recomendacao') == 4) {
+    if (sessionStorage.recomendacao == 4) {
         titulo_recomendacao.innerHTML = 'The Legend of Zelda: Ocarina of Time';
         document.body.style.backgroundImage = 'url("assets/fundos/fundoOFT.jpg")';
         jogo_recomendacao.src = 'assets/capas/OFT.jpg';
@@ -160,7 +160,7 @@
                     <p>▼ Gráficos</p>
                 </span>`;
     }
-    if (sessionStorage.getItem('recomendacao') == 5) {
+    if (sessionStorage.recomendacao == 5) {
         titulo_recomendacao.innerHTML = 'Resident Evil 2';
         document.body.style.backgroundImage = 'url("assets/fundos/fundoRE2.jpg")';
         jogo_recomendacao.src = 'assets/capas/RE2.jpg';
@@ -180,7 +180,7 @@
                     <p>▼ Telas de Carregamento Constantes (Portas)</p>
                 </span>`;
     }
-    if (sessionStorage.getItem('recomendacao') == 6) {
+    if (sessionStorage.recomendacao == 6) {
         titulo_recomendacao.innerHTML = 'Chrono Trigger';
         document.body.style.backgroundImage = 'url("assets/fundos/fundoCT.jpeg")';
         jogo_recomendacao.src = 'assets/capas/CT.jpg';

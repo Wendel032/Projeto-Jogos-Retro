@@ -123,7 +123,7 @@
                     if (resposta[0]) {
                         setTimeout(() => {
                             sessionStorage.acessos = resposta[0].idUsuario;
-                        }, "300"); 
+                        }, "300");
                     }
                 });
             }
@@ -154,6 +154,27 @@
         }
     }
 
+    function atualizarHorario(id) {
+        fetch("/usuarios2/atualizarHorario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idServer: id
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
     function quiz() {
         var js_nome = ipt_casNome.value;
         var js_email = ipt_casEmail.value;
@@ -174,7 +195,7 @@
         }
         else {
             but_iniciar.onclick = "";
-            sessionStorage.setItem('nome', js_nome);
+            sessionStorage.nome = js_nome;
 
             fetch("/usuarios2/verificarEmail", {
                 method: "POST",
@@ -212,7 +233,9 @@
                                             window.location = "quiz.html";
                                         }, "500");
                                     } else {
+                                        alert('Algo deu errado, tente novamente');
                                         throw "Houve um erro ao tentar realizar o cadastro!";
+                                        but_iniciar.onclick = quiz;
                                     }
                                 })
                                 .catch(function (resposta) {
@@ -254,8 +277,8 @@
                     response.json().then(function (resposta) {
                         if (resposta[0]) {
                             alert(`Bem-vindo(a) de volta, ${resposta[0].nome}`)
-                            sessionStorage.setItem('codigo', resposta[0].codigo);
-                            sessionStorage.setItem('recomendacao', resposta[0].jogo);
+                            sessionStorage.codigo = resposta[0].codigo;
+                            sessionStorage.recomendacao = resposta[0].jogo;
                             setTimeout(() => {
                                 window.location = "recomendacao.html";
                             }, "500");
@@ -267,7 +290,7 @@
                     });
                 }
                 else {
-
+                    alert('Algo deu errado, tente novamente');
                     console.log("Houve um erro ao tentar realizar o login!");
 
                     response.text().then(texto => {
@@ -303,14 +326,16 @@
                         if (resposta[0]) {
                             if (resposta[0].codigo) { //Caso o usuário tenha realizado o quiz
                                 alert(`Bem-vindo(a) de volta, ${resposta[0].nome}`)
-                                sessionStorage.setItem('codigo', resposta[0].codigo);
-                                sessionStorage.setItem('recomendacao', resposta[0].jogo);
+                                sessionStorage.codigo = resposta[0].codigo;
+                                sessionStorage.recomendacao = resposta[0].jogo;
                                 setTimeout(() => {
                                     window.location = "recomendacao.html";
                                 }, "500");
                             } else {
-                                sessionStorage.setItem('nome', resposta[0].nome);
-                                sessionStorage.setItem('acessos', resposta[0].idUsuario);
+                                alert(`Bem-vindo(a) de volta, ${resposta[0].nome}`)
+                                sessionStorage.nome = resposta[0].nome;
+                                sessionStorage.acessos = resposta[0].idUsuario;
+                                atualizarHorario(resposta[0].idUsuario);
                                 setTimeout(() => {
                                     window.location = "quiz.html";
                                 }, "500");
@@ -322,9 +347,8 @@
                     });
                 }
                 else {
-
+                    alert('Algo deu errado, tente novamente');
                     console.log("Houve um erro ao tentar realizar o login!");
-
                     response.text().then(texto => {
                         console.error(texto);
                     });

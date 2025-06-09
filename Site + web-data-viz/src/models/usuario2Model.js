@@ -16,7 +16,16 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucao);
 }
 
+function atualizarHorario(id) {
+    var instrucao = `
+    UPDATE Usuario SET dtHoraCadastro = DEFAULT WHERE idUsuario = '${id}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     verificarEmail,
-    cadastrar
+    cadastrar,
+    atualizarHorario
 };

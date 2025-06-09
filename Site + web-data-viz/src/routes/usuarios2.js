@@ -11,4 +11,8 @@ router.post("/cadastrar", function (req, res) {
     usuario2Controller.cadastrar(req, res);
 });
 
+router.post("/atualizarHorario", function (req, res) {
+    usuario2Controller.atualizarHorario(req, res);
+});
+
 module.exports = router;
