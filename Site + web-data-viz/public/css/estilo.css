@@ -365,7 +365,7 @@ input:focus {
     margin-top: 0.5vw;
 }
 
-#pontos{
+#pontos {
     display: flex;
     flex-direction: row;
     gap: 4%;
@@ -511,4 +511,56 @@ input:focus {
     align-items: center;
     justify-content: center;
     background-color: none;
+}
+
+#pagina_jogos {
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0%;
+}
+
+.navegador {
+    opacity: 96%;
+    user-select: none;
+    position: fixed;
+    color: #fdf9b4;
+    font-size: 10vw;
+}
+
+.navegador:hover {
+    cursor: pointer;
+    opacity: 90%;
+    color: #453031;
+}
+
+#sobre_jogo{
+    width: 50%;
+    height: 80%;
+    display: flex;    
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1.5%;
+}
+
+#secao_video{
+    width: 50%;
+    height: 80%;
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1.5%;
+    gap: 1%;
+}
+
+.aparecer {
+    animation: aparecer 1s ease-in forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+    }
 }

@@ -13,13 +13,13 @@
         <div class="ret_superior_recomendacao">
             <p class="titulo_geral">Com Base Em Seu Perfil Recomendo-lhe...</p>
             <span class="linha"></span>
-            <p id="titulo_recomendacao" class="subtitulo_geral">[...]</p>
+            <p id="titulo_recomendacao" class="subtitulo_geral aparecer" style="animation: aparecer 1s ease-in forwards;">[...]</p>
         </div>
-        <div class="ret_recomendacao1">
+        <div class="ret_recomendacao1 aparecer">
             <img id="jogo_recomendacao" src="" alt="jogo">
             <b id="plataformas">Plataformas: ...</b>
         </div>
-        <div class="ret_recomendacao2">
+        <div class="ret_recomendacao2 aparecer">
             <p class="subtitulo_geral">Review do Jogo</p>
             <p id="texto2">Texto.</p>
             <p class="subtitulo_geral">Pontos Positivos e Negativos</p>
@@ -36,8 +36,10 @@
                 </span>
 
             </div>
-            <button onclick="inicio()" class="but_recomendacao">Voltar ao Início</button>
-            <button onclick="dashboard()" class="but_recomendacao">Ver Estatísticas do Quiz</button>
+            <a href="index.html"><button  class="but_recomendacao">Voltar ao Início</button></a>
+            <a href="dashboard.html"><button class="but_recomendacao">Ver Estatísticas do Quiz</button></a>
+            <a href="jogos.html"><button class="but_recomendacao">Ver Mais Sobre os Jogos</button></a>
+
         </div>
 
         <div id="revisao_respostas">
@@ -50,7 +52,7 @@
                 <p class="texto_pergunta"><b>2. Qual nível de dificuldade um bom jogo deve possuir?</b></p>
                 <p class="rev">Sua Resposta: <i id="rev2"></i></p>
 
-                <p class="texto_pergunta"><b>3. Você joga no celular sem nenhum acessório?</b></p>
+                <p class="texto_pergunta"><b>3. Você jogará no celular sem nenhum acessório?</b></p>
                 <p class="rev">Sua Resposta: <i id="rev3"></i></p>
 
                 <p class="texto_pergunta"><b>4. O que você NÃO gosta em jogos?</b></p>
@@ -90,8 +92,7 @@
         jogo_recomendacao.src = 'assets/capas/SOTN.jpg';
         jogo_recomendacao.title = "Capa oficial de Castlevania: Symphony of the Night, © Konami, 1997.";
         plataformas.innerHTML = 'Plataformas: PS1, PSP, Android...';
-        texto2.innerHTML = `Considerado por muitos o ápice da franquia Castlevania, mesmo após décadas de seu lançamento, Castlevania: Symphony of the Night é amplamente reconhecido como o jogo que ajudou a definir um novo gênero: Metroidvania. Faz jus ao nome e entrega uma verdadeira sinfonia em forma de jogo - música, gameplay, gráficos - tudo nesse título parece estar em perfeita sintonia, criando uma experiência única para o jogador. 
-        No entanto, nem tudo são flores: não espere uma história complexa, e a reta final pode parecer um pouco fora de tom com o restante da obra`;
+        texto2.innerHTML = `Considerado por muitos o ápice da franquia Castlevania, mesmo após décadas de seu lançamento, Castlevania: Symphony of the Night é amplamente reconhecido como o jogo que ajudou a definir um novo gênero: Metroidvania. Faz jus ao nome e entrega uma verdadeira sinfonia em forma de jogo - música, gameplay, gráficos - tudo nesse título parece estar em perfeita sintonia, criando uma experiência única para o jogador. No entanto, nem tudo são flores: não espere uma história complexa, e a reta final pode parecer um pouco fora de tom com o restante da obra`;
         pontos.innerHTML = `                
                 <span>
                     <p>▲ Trilha Sonora (Incrível!)</p>
@@ -110,8 +111,7 @@
         jogo_recomendacao.src = 'assets/capas/MMX.jpg';
         jogo_recomendacao.title = "Capa oficial de Mega Man X, © Capcom, 1993.";
         plataformas.innerHTML = 'Plataformas: Super Nintendo, Wii, PS2, Android...';
-        texto2.innerHTML = `Um clássico do gênero, Mega Man X é resultado de anos de experiência acumulada pela franquia Mega Man. Sua gameplay dinâmica foi uma verdadeira revolução na época e, ainda hoje, impressiona por sua velocidade e fluidez. A trilha sonora é o ápice do que o Super Nintendo podia oferecer e estimula o jogador a avançar cada vez mais. 
-        Entretanto, não espere uma história muito complexa, e a jogabilidade acelerada pode representar um desafio para alguns. `;
+        texto2.innerHTML = `Um clássico do gênero, Mega Man X é resultado de anos de experiência acumulada pela franquia Mega Man. Sua gameplay dinâmica foi uma verdadeira revolução na época e, ainda hoje, impressiona por sua velocidade e fluidez. A trilha sonora é o ápice do que o Super Nintendo podia oferecer e estimula o jogador a avançar cada vez mais. Entretanto, não espere uma história muito complexa, e a jogabilidade acelerada pode representar um desafio para alguns. `;
         pontos.innerHTML = `                
                 <span>
                     <p>▲ Trilha Sonora (Bem Animada)</p>
@@ -129,8 +129,7 @@
         jogo_recomendacao.src = 'assets/capas/FFT.jpg';
         jogo_recomendacao.title = "Capa oficial de Final Fantasy Tactics: The War of the Lions, © Square Enix Co., Ltd., 2007.";
         plataformas.innerHTML = 'Plataformas: PS1, PSP, Android...';
-        texto2.innerHTML = `Se fosse resumir este jogo em uma palavra, seria: surpresa — uma grata surpresa. Quando iniciei minha jogatina, jamais poderia prever o desenrolar da incrível narrativa deste game. Junto ao pacote, vieram uma gameplay envolvente e uma trilha sonora cativante. 
-        Entretanto, o jogo possui algumas mecânicas complexas e um nível de dificuldade alto para iniciantes. Recomendo pesquisar um pouco antes de se aventurar pelo reino de Ivalice. `;
+        texto2.innerHTML = `Se fosse resumir este jogo em uma palavra, seria: surpresa — uma grata surpresa. Quando iniciei minha jogatina, jamais poderia prever o desenrolar da incrível narrativa deste game. Junto ao pacote, vieram uma gameplay envolvente e uma trilha sonora cativante. Entretanto, o jogo possui algumas mecânicas complexas e um nível de dificuldade alto para iniciantes. Recomendo pesquisar um pouco antes de se aventurar pelo reino de Ivalice. `;
         pontos.innerHTML = `                
                 <span>
                     <p>▲ Trilha Sonora</p>
@@ -148,8 +147,7 @@
         jogo_recomendacao.src = 'assets/capas/OFT.jpg';
         jogo_recomendacao.title = "Capa oficial de The Legend of Zelda: Ocarina of Time, © Nintendo, 1998.";
         plataformas.innerHTML = 'Plataformas: Nintendo 64, Nintendo Switch, Nindendo 3DS...';
-        texto2.innerHTML = `The Legend of Zelda: Ocarina of Time é, para muitos, simplesmente o melhor jogo de todos os tempos. É impressionante pensar que esse foi o primeiro jogo 3D da franquia Zelda, pois suas mecânicas continuam extremamente divertidas e atuais. A música é icônica e a história, verdadeiramente envolvente. Não é surpresa que, mesmo após décadas de seu lançamento, este título continue sendo referência no mercado. 
-        Apesar disso, é inegável que os gráficos podem parecer datados aos olhos de alguns. Para esses, recomendo a versão de Nintendo 3DS, que apresenta uma grande melhoria visual. `;
+        texto2.innerHTML = `The Legend of Zelda: Ocarina of Time é, para muitos, simplesmente o melhor jogo de todos os tempos. É impressionante pensar que esse foi o primeiro jogo 3D da franquia Zelda, pois suas mecânicas continuam extremamente divertidas e atuais. A música é icônica e a história, verdadeiramente envolvente. Não é surpresa que, mesmo após décadas de seu lançamento, este título continue sendo referência no mercado. Apesar disso, é inegável que os gráficos podem parecer datados aos olhos de alguns. Para esses, recomendo a versão de Nintendo 3DS, que apresenta uma grande melhoria visual. `;
         pontos.innerHTML = `                
                 <span>
                     <p>▲ Trilha Sonora (Icônica)</p>
@@ -166,8 +164,7 @@
         jogo_recomendacao.src = 'assets/capas/RE2.jpg';
         jogo_recomendacao.title = "Capa oficial de Resident Evil 2, © Capcom, 1998.";
         plataformas.innerHTML = 'Plataformas: PS1, Microsoft Windows, Nintendo 64...';
-        texto2.innerHTML = `Dividido em duas campanhas, este jogo possui uma das melhores ambientações quando o assunto é gerar tensão e medo no jogador. Cada porta aberta é um novo mundo de terror que se revela. Resident Evil 2 continua sendo, até hoje, um dos títulos mais sólidos do gênero. A história intriga, e os desafios cativam — sem dúvidas, é um clássico que vale a pena ser jogado. 
-        No entanto, a jogabilidade é travada — alguns argumentam que isso é proposital, para aumentar a sensação de impotência do jogador. Os gráficos antigos, embora combinem com o clima do jogo, podem incomodar alguns.`;
+        texto2.innerHTML = `Dividido em duas campanhas, este jogo possui uma das melhores ambientações quando o assunto é gerar tensão e medo no jogador. Cada porta aberta é um novo mundo de terror que se revela. Resident Evil 2 continua sendo, até hoje, um dos títulos mais sólidos do gênero. A história intriga, e os desafios cativam — sem dúvidas, é um clássico que vale a pena ser jogado. No entanto, a jogabilidade é travada — alguns argumentam que isso é proposital, para aumentar a sensação de impotência do jogador. Os gráficos antigos, embora combinem com o clima do jogo, podem incomodar alguns.`;
         pontos.innerHTML = `                
                 <span>
                     <p>▲ Boa Ambientação (Clima de Terror Bem Feito)</p>
@@ -186,8 +183,7 @@
         jogo_recomendacao.src = 'assets/capas/CT.jpg';
         jogo_recomendacao.title = "Capa oficial de Chrono Trigger (versão de DS), © Square Co., Ltd., 2008.";
         plataformas.innerHTML = 'Plataformas: Super Nintendo, Nintento DS, PS1...';
-        texto2.innerHTML = `Este é, com certeza, um dos melhores RPGs já feitos — um clássico indiscutível. Chrono Trigger é uma excelente porta de entrada tanto para o gênero quanto para os jogos em geral. Tudo neste game é sólido: gameplay, história, música (a trilha sonora é um show à parte). 
-        Todavia, para alguns, o jogo pode parecer um pouco simples. No entanto, é justamente nessa simplicidade que a obra encontra seu brilho. `;
+        texto2.innerHTML = `Este é, com certeza, um dos melhores RPGs já feitos — um clássico indiscutível. Chrono Trigger é uma excelente porta de entrada tanto para o gênero quanto para os jogos em geral. Tudo neste game é sólido: gameplay, história, música (a trilha sonora é um show à parte). Todavia, para alguns, o jogo pode parecer um pouco simples. No entanto, é justamente nessa simplicidade que a obra encontra seu brilho. `;
         pontos.innerHTML = `                
                 <span>
                     <p>▲ Trilha Sonora</p>
@@ -248,15 +244,6 @@
         })
     } else {
         alert('Código não encontrado');
-    }
-
-
-    function inicio() {
-        window.location = "index.html"
-    }
-
-    function dashboard() {
-        window.location = "dashboard.html"
     }
 </script>
 

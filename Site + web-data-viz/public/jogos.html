@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br" style="background-image: none;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>Jogos Retrô - Mais Jogos</title>
+</head>
+
+<body>
+    <div class="ret_principal" id="pagina_jogos">
+        <p class="navegador" style="right: 0;" onclick="trocarJogo('direita')">&gt</p>
+        <p class="navegador" style="left: 0;" onclick="trocarJogo('esquerda')">&lt</p>
+        <div
+            style="width: 100%; height: 20%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <p class="subtitulo_geral" id="titulo_jogo" style="font-size: 4vw;"></p>
+        </div>
+        <div id="sobre_jogo">
+            <p class="subtitulo_geral">Sinopse</p>
+            <p id="sinopse" style="text-align: justify;">
+            </p>
+            <span>
+                <a href="recomendacao.html"><button class="but_recomendacao" style=" width: 10vw; height: 4vw;">Voltar</button></a>
+                <button class="but_recomendacao" style=" width: 10vw; height: 4vw;" onclick="ver_arte()">Ver Arte</button>
+                <a id="manual" target="_blank"><button class="but_recomendacao" style=" width: 10vw; height: 4vw;" >Ver Manual</button></a>
+
+            </span>
+        </div>
+
+        <div id="secao_video">
+            <p class="subtitulo_geral" style="margin-left: 1vw; align-self: flex-start;">Vídeo Sobre o Jogo</p>
+            <div id="video">
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+<script>
+    var fonte = '';
+
+    if (sessionStorage.recomendacao) {
+        js_jogo = Number(sessionStorage.recomendacao);
+    } else {
+        js_jogo = 1;
+    };
+
+    function exibirJogo() {
+        switch (js_jogo) {
+            case 1:
+                document.body.style.backgroundImage = 'url("assets/fundos/fundoSOTN.jpg")';
+                titulo_jogo.innerHTML = 'Castlevania: Symphony of the Night';
+                sinopse.style = `font-size: 1.18vw; text-align: justify;`;
+                sinopse.innerHTML = `Foi Richter Belmont, o lendário caçador de vampiros, quem finalmente pôs fim à ameaça do Conde Drácula, Senhor dos Vampiros, ressurgido da tumba pelo sacerdote sombrio Shaft. Porém, numa noite de lua cheia, quatro anos depois, Richter desaparece misteriosamente. Sem pistas de onde ele foi, Maria Renard decide encontrá-lo. Então, o Castelo de Drácula, que se acredita reaparecer uma vez a cada século, irrompe da neblina, como se fosse mostrada a ela a direção. Enquanto isso, forças poderosas conspiram pela alma de um homem chamado Alucard — o mesmo que se uniu a Trevor Belmont para enfrentar seu pai imortal, o Conde Vlad Tepes Drácula. Para purgar o mundo da maldição de seu sangue vampírico, Alucard havia mergulhado seus poderes em um sono eterno. Mas agora ele desperta, consciente do mal novamente à espreita em sua terra natal. Mais uma vez, o tempo chegou para que as forças do Bem e do Mal se engajem em sua antiga batalha. O castelo de Drácula o chama… E ninguém pode dizer quem sairá vencedor.`;
+                video.innerHTML = `<iframe style="width: 42vw; height: 25vw; border-radius: 2vw;" src="https://www.youtube.com/embed/tKghKszakiU" title="Por que CASTLEVANIA: SYMPHONY OF THE NIGHT é um dos melhores jogos de todos os tempos?" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+                manual.href = 'https://docs.google.com/viewerng/viewer?url=https://bdjogos.com.br/manuais/453-castlevania-symphony-of-the-night-playstation-manual-usa.pdf';
+                fonte = 'Arte de Ayami Kojima para Castlevania: Symphony of the Night (1997).';
+                break;
+            case 2:
+                document.body.style.backgroundImage = 'url("assets/fundos/fundoMMX.jpg")';
+                titulo_jogo.innerHTML = 'Mega Man X';
+                sinopse.style = `font-size: 1.4vw; text-align: justify;`;
+                sinopse.innerHTML = `“Meu pior pesadelo acabou de se realizar. Sigma se tornou um Maverick hoje e liderou a maioria dos outros Hunters com ele. Seus motivos não estão claros, mas parece que ele ‘decidiu’ que os humanos são inferiores e impedem o crescimento dos Reploids. Por esse motivo, ele decidiu que todos os humanos devem ser erradicados. A maior parte da população está se escondendo ou tentando fugir da cidade. Não sei quanto tempo poderemos resistir às forças de Sigma. Temo ter criado Reploids poderosos demais. X está levando a notícia da guerra muito a sério. Ele quer se juntar a Zero, o novo líder dos Maverick Hunters, quando ele partir contra Sigma. Estou em dúvida quanto às chances deles, mas não o impedirei. Algo precisa ser feito…”`;
+                video.innerHTML = `<iframe style="width: 42vw; height: 25vw; border-radius: 2vw;" src="https://www.youtube.com/embed/dhSSPgOk9gc" title="Megaman X - O Renascimento" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+                manual.href = 'https://www.nintendo.co.jp/clvs/manuals/common/pdf/CLV-P-SABCE.pdf';
+                fonte = 'Arte oficial de Mega Man X (Capcom, 1993).';
+                break;
+            case 3:
+                document.body.style.backgroundImage = 'url("assets/fundos/fundoFFT.jpg")';
+                titulo_jogo.innerHTML = 'Final Fantasy Tactics';
+                sinopse.innerHTML = `De todas essas guerras, lendas de heróis são transmitidas de geração em geração. Esgotadas por boatos e pelo passar do tempo, as verdades podem ser esquecidas, a realidade enterrada sob mitos. Há muitos anos, uma guerra fervia e eclodiu em Ivalice. Ela durou 50 anos, só chegando ao fim quando ambos os lados decidiram depor as armas. No entanto, a guerra exauriu a força do povo e os recursos do reino, e a situação em Ivalice piorou. Os lordes das seis famílias dominantes uniram-se para conduzir Ivalice de volta à prosperidade. Contudo, seu equilíbrio delicado de poder logo desmoronou. Um ano após o fim da guerra, a princesa Ovelia foi sequestrada. Impulsionado por esse ato, emergiu um conflito entre duas famílias: Gallione (liderada pelo Príncipe Larg, cujo brasão é um Leão Branco) e Zeltennia (liderada pelo Príncipe Goltana, cujo brasão é um Leão Negro). A guerra entre essas famílias viria a ser conhecida como a “Guerra do Leão”. Acrescentando complexidade ao pano de fundo da Guerra do Leão estava o problema da sucessão ao trono de Ivalice, após a morte repentina do Rei. O Príncipe Larg é irmão mais velho da Rainha Ruvelia. O Príncipe Goltana é primo mais novo do rei falecido. Segundo registros históricos, um jovem herói chamado Delita conteve a Guerra do Leão pouco depois que ela engolfou Ivalice. Havia também outro jovem chamado Ramza, que desempenhou papel durante a guerra, embora seu nome não conste nos livros de história. Agora a verdadeira história pode ser contada...`;
+                sinopse.style = `font-size: 1.0vw; text-align: justify;`;
+                sinopse.innerHTML = `De todas essas guerras, lendas de heróis são transmitidas de geração em geração. Esgotadas por boatos e pelo passar do tempo, as verdades podem ser esquecidas, a realidade enterrada sob mitos. Há muitos anos, uma guerra fervia e eclodiu em Ivalice. Ela durou 50 anos, só chegando ao fim quando ambos os lados decidiram depor as armas. No entanto, a guerra exauriu a força do povo e os recursos do reino, e a situação em Ivalice piorou. Os lordes das seis famílias dominantes uniram-se para conduzir Ivalice de volta à prosperidade. Contudo, seu equilíbrio delicado de poder logo desmoronou. Um ano após o fim da guerra, a princesa Ovelia foi sequestrada. Impulsionado por esse ato, emergiu um conflito entre duas famílias: Gallione (liderada pelo Príncipe Larg, cujo brasão é um Leão Branco) e Zeltennia (liderada pelo Príncipe Goltana, cujo brasão é um Leão Negro). A guerra entre essas famílias viria a ser conhecida como a “Guerra do Leão”. Acrescentando complexidade ao pano de fundo da Guerra do Leão estava o problema da sucessão ao trono de Ivalice, após a morte repentina do Rei. O Príncipe Larg é irmão mais velho da Rainha Ruvelia. O Príncipe Goltana é primo mais novo do rei falecido. Segundo registros históricos, um jovem herói chamado Delita conteve a Guerra do Leão pouco depois que ela engolfou Ivalice. Havia também outro jovem chamado Ramza, que desempenhou papel durante a guerra, embora seu nome não conste nos livros de história. Agora a verdadeira história pode ser contada...`;
+                video.innerHTML = `<iframe style="width: 42vw; height: 25vw; border-radius: 2vw;" src="https://www.youtube.com/embed/9BOw9iXiIzU" title="O FINAL FANTASY que AINDA não foi SUPERADO" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+                manual.href = 'https://bdjogos.com.br/manuais/529-final-fantasy-tactics-playstation-manual-usa.pdf';
+                fonte = 'Arte oficial de Final Fantasy Tactics: The War of the Lions (Square Enix, 2007).';
+                break;
+            case 4:
+                document.body.style.backgroundImage = 'url("assets/fundos/fundoOFT.jpg")';
+                titulo_jogo.innerHTML = 'The Legend of Zelda: Ocarina of Time';
+                sinopse.style = `font-size: 1.2vw; text-align: justify;`;
+                sinopse.innerHTML = `Certa manhã, Link estava tendo um pesadelo. Era o mesmo pesadelo que ele tinha todas as noites. Durante uma tempestade, Link se via diante de um castelo misterioso. Um cavaleiro a cavalo, carregando uma garota, passava galopando. A garota olhava para Link como se quisesse dizer algo. Então, surgia outro cavaleiro. Um homem grande vestido de preto olhava ameaçadoramente para Link. Link então acordava. — "Link! Ei, acorde, Link! A Grande Árvore Deku quer falar com você!" Quando Link abriu os olhos, viu uma fada flutuando à sua frente. O nome da fada era Navi. Navi fora enviada para levar Link até a Grande Árvore Deku. — "Oh Navi, tu retornaste!" — disse a Árvore Deku. — "Obrigado por vir, Link. Teu sono nestas últimas luas deve ter sido inquieto, repleto de pesadelos. Um clima maligno permeia este mundo. Certamente, já o sentiste. Chegou a hora de testar tua coragem. Fui amaldiçoada. Preciso que desfaças essa maldição com tua sabedoria e coragem. Estás preparado?"`;
+                video.innerHTML = `<iframe style="width: 42vw; height: 25vw; border-radius: 2vw;" src="https://www.youtube.com/embed/MZMRPr4W3mg" title="Ocarina of Time é ATEMPORAL" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+                manual.href = 'https://www.nintendo.com/eu/media/downloads/games_8/emanuals/nintendo_8/Manual_Nintendo64_TheLegendOfZeldaOcarinaOfTime_EN.pdf?srsltid=AfmBOorA541yLTcEDluLY_2KzuvPy-q3LaLXmKh00LQWJefSuNQcHK7f';
+                fonte = 'Arte oficial de The Legend of Zelda: Ocarina of Time (Nintendo, 1998).';
+                break;
+            case 5:
+                document.body.style.backgroundImage = 'url("assets/fundos/fundoRE2.jpg")';
+                titulo_jogo.innerHTML = 'Resident Evil 2';
+                sinopse.style = `font-size: 0.95vw; text-align: justify;`;
+                sinopse.innerHTML = `Imagine uma cidade comum do Meio-Oeste dos Estados Unidos, situada na base de uma vasta floresta. Os negócios prosperavam ali, especialmente com o surgimento de várias novas indústrias. Hoje, você não conseguiria encontrar um lugar mais pacífico para se refugiar na natureza do que Raccoon City. Foi então que os problemas começaram. E tudo parece voltar à época em que a corporação chegou. Boatos começaram a se espalhar, e a cidade foi tomada por acontecimentos estranhos. Criaturas não identificáveis apareceram do nada, e acidentes fatais passaram a ocorrer em um ritmo alarmante. Espalhou-se a notícia de um grave acidente em um laboratório nas montanhas. Ninguém na cidade sabia o que estava acontecendo com sua pacata comunidade. O Departamento de Polícia de Raccoon City, na tentativa de acalmar o medo crescente entre os moradores, recrutou vários novos policiais. Leon S. Kennedy é um dos novos recrutas promissores. Ao se preparar para integrar sua nova unidade, Leon tenta entrar em contato com o capitão que o contratou, mas não consegue localizá-lo. Mesmo assim, ele segue para Raccoon City, pronto para seu novo emprego. Do outro lado da cidade, uma aflita Claire Redfield procura por seu irmão desaparecido, Chris. Claire inicia sua busca em Raccoon City — o último local conhecido onde Chris foi visto, quase dois meses antes — apenas para descobrir algo sobre o “acidente” ocorrido na floresta. Será que Chris ainda está em Raccoon City? Infelizmente para Leon e Claire, eles estão completamente inconscientes do mundo avassalador de horror e desespero que estão prestes a enfrentar…`;
+                video.innerHTML = `<iframe style="width: 42vw; height: 25vw; border-radius: 2vw;" src="https://www.youtube.com/embed/TGk7yX66k24" title="Resident Evil 2: The Perfect Sequel" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+                manual.href = 'https://archive.org/details/resident-evil-2-playstation-manual/mode/2up?view=theater';
+                fonte = 'Arte oficial de Resident Evil 2 (Capcom, 1998).';
+                break;
+            case 6:
+                document.body.style.backgroundImage = 'url("assets/fundos/fundoCT.jpeg")';
+                sinopse.style = `font-size: 1.4vw; text-align: justify;`;
+                titulo_jogo.innerHTML = 'Chrono Trigger';
+                sinopse.innerHTML = `Vivendo no aparentemente pacífico Reino de Guardia em 1000 D.C., o jovem CRONO foi escolhido por espíritos guardiões para salvar o mundo de uma devastação total. Embora o Apocalipse só ocorra em 1999, as sementes da destruição foram plantadas há muito tempo pelo malvado LAVOS. Sua missão em Chrono Trigger é viajar várias vezes através do tempo para mudar o curso da história e impedir que Lavos realize seu plano sombrio. Em sua jornada, você enfrentará monstros e conhecerá muitas pessoas úteis tanto no passado quanto no futuro. Algumas se tornarão fielmente poderosas companheiras, enquanto outras lhe darão pistas por meio de suas histórias. Preste atenção no que dizem, e boa sorte em sua aventura.`;
+                video.innerHTML = `<iframe style="width: 42vw; height: 25vw; border-radius: 2vw;" src="https://www.youtube.com/embed/-EWvn79MI-o" title="Por que CHRONO TRIGGER é um dos MELHORES RPGs de TODOS os tempos?" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+                manual.href = 'https://bdjogos.com.br/manuais/210-chrono-trigger-super-nintendo-manual-usa.pdf';
+                fonte = 'Arte oficial de Chrono Trigger (Square, 1995), por Akira Toriyama.';
+                break;
+        }
+    }
+    exibirJogo();
+
+    function trocarJogo(direcao) {
+        if (direcao == 'esquerda') {
+            js_jogo -= 1;
+            if (js_jogo == 0) {
+                js_jogo = 6;
+            }
+            exibirJogo();
+
+        }
+        if (direcao == 'direita') {
+            js_jogo += 1;
+            if (js_jogo == 7) {
+                js_jogo = 1;
+            }
+            exibirJogo();
+
+        }
+    }
+
+    function ativarComSetas(event) {
+        if (event.key === 'ArrowLeft') {
+            trocarJogo('esquerda');
+
+        }
+        if (event.key === 'ArrowRight') {
+            trocarJogo('direita');
+        }
+    }
+
+    document.addEventListener('keydown', ativarComSetas);
+
+    function ver_arte() {
+        pagina_jogos.style.display = 'none';
+        document.body.title = fonte;
+        setTimeout(() => { pagina_jogos.style.display = 'flex'; document.body.title = '';}, '10000');
+    }
+
+
+</script>
+
+</html>
